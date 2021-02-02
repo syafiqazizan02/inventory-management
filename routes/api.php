@@ -7,9 +7,9 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('login', 'API\Auth\AuthController@login');
+    Route::post('logout', 'API\Auth\AuthController@logout');
+    Route::post('refresh', 'API\Auth\AuthController@refresh');
+    Route::post('me', 'API\Auth\AuthController@me');
 
 });
