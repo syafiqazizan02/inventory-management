@@ -34,6 +34,7 @@
                                             <input type="password" class="form-control" id="exampleInputConfirmPassword"
                                                    placeholder="Enter Confirm Password"
                                                    v-model="form.password_confirmation">
+                                            <small class="text-danger" v-if="errors.password_confirmation"> {{ errors.password_confirmation[0] }} </small>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">Register</button>
