@@ -300,7 +300,11 @@
 
 <script>
     export default {
-        name: "Home"
+        created(){
+            if (!User.loggedIn()) {
+                this.$router.push({name: '/'})
+            }
+        },
     }
 </script>
 
