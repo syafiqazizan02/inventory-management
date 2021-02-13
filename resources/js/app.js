@@ -14,6 +14,11 @@ import User from './helpers/User';
 window.User = User
 
 
+// Import Notification Class
+import Notification from './Helpers/Notification';
+window.Notification = Notification
+
+
 // SweetAlert Imported
 import Swal from 'sweetalert2'
 window.Swal = Swal;
