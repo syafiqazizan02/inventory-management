@@ -80,7 +80,6 @@ class AuthController extends Controller
             'email' => 'required|unique:users|max:255',
             'name' => 'required',
             'password' => 'required|min:6|confirmed'
-
         ]);
 
         $data = array();
