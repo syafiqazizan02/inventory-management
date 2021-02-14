@@ -63,7 +63,7 @@
                                                         File</label>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <img :src="form.photo" style="height: 40px; width: 40px;">
+                                                    <img :src="form.photo" style="height: 50px; width: 50px;">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="date" class="form-control" id="exampleInputJoiningDate"
@@ -106,7 +106,27 @@
             }
         },
         methods:{
-
+            onFileSelected(event){
+                let file = event.target.files[0];
+                if (file.size > 1048770) {
+                    Notification.image_validation() // image helpers
+                }else{
+                    let reader = new FileReader();
+                    reader.onload = event =>{
+                        this.form.photo = event.target.result
+                        // console.log(event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            },
+            employeeInsert(){
+                axios.post('/api/employee',this.form)
+                    .then(() => {
+                        this.$router.push({ name: 'employee'})
+                        Notification.success()
+                    })
+                    .catch(error =>this.errors = error.response.data.errors)
+            },
         },
         created(){
             if (!User.loggedIn()) {
