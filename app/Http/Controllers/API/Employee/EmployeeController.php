@@ -109,6 +109,14 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = Employee::where('id',$id)->first();
+        $photo = $employee->photo;
+
+        if ($photo) {
+            unlink($photo);
+            Employee::where('id',$id)->delete();
+        }else{
+            Employee::where('id',$id)->delete();
+        }
     }
 }

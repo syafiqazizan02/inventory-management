@@ -2742,10 +2742,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      employees: []
+      employees: [],
+      searchTerm: ''
     };
   },
   methods: {
@@ -2757,7 +2759,32 @@ __webpack_require__.r(__webpack_exports__);
         return _this.employees = data;
       })["catch"]();
     },
-    deleteEmployee: function deleteEmployee() {}
+    deleteEmployee: function deleteEmployee(id) {
+      var _this2 = this;
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          axios["delete"]('/api/employee/' + id).then(function () {
+            _this2.employees = _this2.employees.filter(function (employee) {
+              return employee.id != id;
+            });
+          })["catch"](function () {
+            _this2.$router.push({
+              name: 'employee'
+            });
+          });
+          Swal.fire('Deleted!', 'Successfully deleted.', 'success');
+        }
+      });
+    }
   },
   created: function created() {
     if (!User.loggedIn()) {
@@ -2767,6 +2794,15 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     this.allEmployee(); // load get employee
+  },
+  computed: {
+    filtersearch: function filtersearch() {
+      var _this3 = this;
+
+      return this.employees.filter(function (employee) {
+        return employee.name.match(_this3.searchTerm);
+      });
+    }
   }
 });
 
@@ -47632,83 +47668,95 @@ var render = function() {
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card" }, [
-                    _c("div", { staticClass: "table-responsive" }, [
-                      _c(
-                        "table",
-                        { staticClass: "table align-items-center table-flush" },
-                        [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.employees, function(employee) {
-                              return _c("tr", { key: employee.id }, [
-                                _c("td", [
-                                  _c("img", {
-                                    attrs: {
-                                      src: employee.photo,
-                                      id: "em_photo"
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(" " + _vm._s(employee.name) + " ")
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(employee.phone))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(employee.salary))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(employee.joining_date))
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "btn btn-sm btn-primary",
-                                        attrs: {
-                                          to: {
-                                            name: "edit-employee",
-                                            params: { id: employee.id }
-                                          }
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.searchTerm,
+                        expression: "searchTerm"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    staticStyle: { float: "right", width: "200px" },
+                    attrs: { type: "text", placeholder: "Search by (Name)" },
+                    domProps: { value: _vm.searchTerm },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.searchTerm = $event.target.value
+                      }
+                    }
+                  }),
+                  _c("br"),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table align-items-center table-flush" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.filtersearch, function(employee) {
+                            return _c("tr", { key: employee.id }, [
+                              _c("td", [
+                                _c("img", {
+                                  attrs: { src: employee.photo, id: "em_photo" }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(" " + _vm._s(employee.name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(employee.phone))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(employee.salary))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(employee.joining_date))]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "btn btn-sm btn-primary",
+                                      attrs: {
+                                        to: {
+                                          name: "edit-employee",
+                                          params: { id: employee.id }
                                         }
-                                      },
-                                      [_vm._v("Edit")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "btn btn-sm btn-danger",
-                                        staticStyle: { color: "white" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.deleteEmployee(
-                                              employee.id
-                                            )
-                                          }
+                                      }
+                                    },
+                                    [_vm._v("Edit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "btn btn-sm btn-danger",
+                                      staticStyle: { color: "white" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteEmployee(employee.id)
                                         }
-                                      },
-                                      [_vm._v("Delete")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ])
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-footer" })
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
                   ])
                 ])
               ])
