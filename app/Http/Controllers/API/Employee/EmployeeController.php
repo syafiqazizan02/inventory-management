@@ -34,7 +34,9 @@ class EmployeeController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'ic' => 'required|unique:employees',
-
+            'salary' => 'required',
+            'address' => 'required',
+            'joining_date' => 'required',
         ]);
 
         if ($request->photo) {

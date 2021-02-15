@@ -10,6 +10,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Add Employee</h1>
                                     </div>
+                                    <hr>
                                     <form class="user" @submit.prevent="employeeInsert" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <div class="form-row">
@@ -28,13 +29,13 @@
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputIcNumber"
-                                                           placeholder="Enter IC Number" v-model="form.ic">
+                                                    <input type="text" class="form-control" id="exampleInputIC"
+                                                           placeholder="Enter IC" v-model="form.ic">
                                                     <small class="text-danger" v-if="errors.ic"> {{ errors.ic[0]}} </small>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputPhoneNumber"
-                                                           placeholder="Enter Phone Number" v-model="form.phone">
+                                                    <input type="text" class="form-control" id="exampleInputPhone"
+                                                           placeholder="Enter Phone" v-model="form.phone">
                                                     <small class="text-danger" v-if="errors.phone"> {{ errors.phone[0]}} </small>
                                                 </div>
                                             </div>
@@ -55,29 +56,28 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="form-row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-5">
                                                     <input type="file" class="custom-file-input" id="customFile"
                                                            @change="onFileSelected">
                                                     <small class="text-danger" v-if="errors.photo"> {{ errors.photo[0]}} </small>
                                                     <label class="custom-file-label" for="customFile">Choose
                                                         File</label>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <img :src="form.photo" style="height: 50px; width: 50px;">
+                                                <div class="col-md-1">
+                                                    <img :src="form.photo" style="height: 30px; width: 30px;">
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <input type="date" class="form-control" id="exampleInputJoiningDate"
-                                                           placeholder="Enter Joining Date"
-                                                           v-model="form.joining_date">
+                                                <div class="col-md-5">
+                                                    <input type="date" class="form-control" id="exampleInputDate"
+                                                           placeholder="Enter Joining Date" v-model="form.joining_date">
                                                     <small class="text-danger" v-if="errors.joining_date"> {{ errors.joining_date[0] }} </small>
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                         </div>
                                     </form>
-                                    <hr>
                                 </div>
                             </div>
                         </div>
