@@ -66,6 +66,7 @@
         data(){
             return{
                 form:{
+                    name: null,
                     email: null,
                     password: null,
                     password: null,
@@ -90,7 +91,6 @@
                     .catch(error =>
                         this.errors = error.response.data.errors
                     )
-
             }
         },
         created(){

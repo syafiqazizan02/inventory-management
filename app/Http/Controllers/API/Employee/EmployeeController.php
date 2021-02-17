@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Employee;
 
 use App\Http\Controllers\Controller;
-use App\Model\Employee;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Image;
 use DB;
@@ -122,7 +122,7 @@ class EmployeeController extends Controller
             $upload_path = 'backend/employee/';
             $image_url = $upload_path.$name;
             $success = $img->save($image_url);
-         
+
             if ($success) {
                 $data['photo'] = $image_url;
                 $img = Employee::where('id',$id)->first();
@@ -130,7 +130,7 @@ class EmployeeController extends Controller
                 $done = unlink($image_path);
                 $employee  = Employee::where('id',$id)->update($data);
             }
-          
+
         }else{
             $oldphoto = $request->photo;
             $data['photo'] = $oldphoto;

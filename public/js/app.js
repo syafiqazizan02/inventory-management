@@ -2486,6 +2486,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     return {
       form: (_form = {
+        name: null,
         email: null,
         password: null
       }, _defineProperty(_form, "password", null), _defineProperty(_form, "confirm_password", null), _form),
