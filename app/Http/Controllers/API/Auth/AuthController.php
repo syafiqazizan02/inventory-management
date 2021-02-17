@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Email or Password Invalid'], 401);
+            return response()->json(['error' => 'Email or Password Invalid!'], 401);
         }
 
         // redirect respondWithToken()
@@ -60,7 +61,7 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out!']);
     }
 
     /**
@@ -81,11 +82,18 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed'
         ]);
 
-        $data = array();
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-        $data['password'] = Hash::make($request->password);
-        DB::table('users')->insert($data);
+        $data = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $data->save();
+
+        // $data = array();
+        // $data['name'] = $request->name;
+        // $data['email'] = $request->email;
+        // $data['password'] = Hash::make($request->password);
+        // DB::table('users')->insert($data);
 
         // redirect login()
         return $this->login($request);

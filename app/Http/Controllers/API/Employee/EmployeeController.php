@@ -55,7 +55,6 @@ class EmployeeController extends Controller
 
             // image process with image
             $employee = new Employee;
-
             $employee->name = $request->name;
             $employee->email = $request->email;
             $employee->phone = $request->phone;
