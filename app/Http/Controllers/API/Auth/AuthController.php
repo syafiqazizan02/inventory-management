@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -88,12 +87,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
         $data->save();
-
-        // $data = array();
-        // $data['name'] = $request->name;
-        // $data['email'] = $request->email;
-        // $data['password'] = Hash::make($request->password);
-        // DB::table('users')->insert($data);
 
         // redirect login()
         return $this->login($request);

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Image;
-use DB;
 
 class EmployeeController extends Controller
 {
@@ -34,10 +34,9 @@ class EmployeeController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'ic' => 'required|unique:employees',
+            'code' => 'required|unique:employees',
             'salary' => 'required',
             'address' => 'required',
-            'joining_date' => 'required',
         ]);
 
         if ($request->photo) {
@@ -60,10 +59,10 @@ class EmployeeController extends Controller
             $employee->phone = $request->phone;
             $employee->salary = $request->salary;
             $employee->address = $request->address;
-            $employee->ic = $request->ic;
-            $employee->joining_date = $request->joining_date;
+            $employee->code = 'EM'.$request->code;
+            $employee->joining_date = Carbon::now()->toDateTimeString();
             $employee->photo = $image_url;
-            $employee->save();
+            $employee->save(['timestamps' => false]);
         }else{
 
             // image process without image
@@ -73,9 +72,9 @@ class EmployeeController extends Controller
             $employee->phone = $request->phone;
             $employee->salary = $request->salary;
             $employee->address = $request->address;
-            $employee->ic = $request->ic;
-            $employee->joining_date = $request->joining_date;
-            $employee->save();
+            $employee->code = 'EM'.$request->code;
+            $employee->joining_date = Carbon::now()->toDateTimeString();
+            $employee->save(['timestamps' => false]);
         }
     }
 
@@ -107,8 +106,8 @@ class EmployeeController extends Controller
         $data['phone'] = $request->phone;
         $data['salary'] = $request->salary;
         $data['address'] = $request->address;
-        $data['ic'] = $request->ic;
-        $data['joining_date'] = $request->joining_date;
+        $data['code'] = $request->code;
+//        $data['joining_date'] = $request->joining_date;
         $image = $request->newphoto;
 
         if ($image) {
