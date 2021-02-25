@@ -8,7 +8,7 @@
                             <div class="col-lg-12">
                                 <div class="login-form">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">View Supplier</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">View Suppliers</h1>
                                     </div>
                                     <hr>
                                     <input type="text" v-model="searchTerm" class="form-control"

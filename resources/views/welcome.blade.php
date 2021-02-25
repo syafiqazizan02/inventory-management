@@ -46,7 +46,7 @@
                     <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <router-link to="/new-employee" class="collapse-item">New Employee</router-link>
-                            <router-link to="/employee" class="collapse-item">View Employee</router-link>
+                            <router-link to="/employee" class="collapse-item">View Employees</router-link>
                         </div>
                     </div>
                 </li>
@@ -54,12 +54,25 @@
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
                        aria-expanded="true" aria-controls="collapseBootstrap2">
                         <i class="far fa-fw fa-window-maximize"></i>
-                        <span>Suppliers</span>
+                        <span>Supplier</span>
                     </a>
                     <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <router-link to="new-supplier" class="collapse-item">New Suppliers</router-link>
+                            <router-link to="new-supplier" class="collapse-item">New Supplier</router-link>
                             <router-link to="supplier" class="collapse-item">View Suppliers</router-link>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
+                       aria-expanded="true" aria-controls="collapseBootstrap3">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Category</span>
+                    </a>
+                    <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <router-link to="new-category" class="collapse-item">New Category</router-link>
+                            <router-link to="category" class="collapse-item">View Categories</router-link>
                         </div>
                     </div>
                 </li>

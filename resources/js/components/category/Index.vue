@@ -8,7 +8,7 @@
                             <div class="col-lg-12">
                                 <div class="login-form">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">View Employees</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">View Categories</h1>
                                     </div>
                                     <hr>
                                     <input type="text" v-model="searchTerm" class="form-control"
@@ -17,25 +17,17 @@
                                         <table class="table align-items-center table-flush">
                                             <thead class="thead-light">
                                             <tr>
-                                                <!--<th>Photo</th>-->
-                                                <th>Name</th>
-                                                <th>Phone</th>
-                                                <th>Salary</th>
-                                                <th>Joining Date</th>
-                                                <th>Action</th>
+                                                <th width="70%">Name</th>
+                                                <th width="30%">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr v-for="employee in filtersearch" :key="employee.id">
-                                                <!--<td><img :src="employee.photo" id="em_photo"></td>-->
-                                                <td> {{ employee.name }}</td>
-                                                <td>{{ employee.phone }}</td>
-                                                <td>{{ employee.salary }}</td>
-                                                <td>{{ employee.joining_date }}</td>
+                                            <tr v-for="category in filtersearch" :key="category.id">
+                                                <td> {{ category.category_name }}</td>
                                                 <td>
-                                                    <router-link :to="{name: 'edit-employee', params:{id:employee.id}}"
+                                                    <router-link :to="{name: 'edit-category', params:{id:category.id}}"
                                                                  class="btn btn-sm btn-primary">Edit</router-link>
-                                                    <a @click="deleteEmployee(employee.id)"
+                                                    <a @click="deleteCategory(category.id)"
                                                        class="btn btn-sm btn-danger" style="color:white;">Delete</a>
                                                 </td>
                                             </tr>
@@ -56,17 +48,17 @@
     export default {
         data(){
             return{
-                employees:[],
+                categories:[],
                 searchTerm:''
             }
         },
         methods:{
-            allEmployee(){
-                axios.get('/api/employee/')
-                    .then(({data}) => (this.employees = data))
+            allCategory(){
+                axios.get('/api/category/')
+                    .then(({data}) => (this.categories = data))
                     .catch()
             },
-            deleteEmployee(id){
+            deleteCategory(id){
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -77,14 +69,14 @@
                     confirmButtonText: 'Yes, Delete it!'
                 }).then((result) => {
                     if (result.value) {
-                        axios.delete('/api/employee/'+id)
+                        axios.delete('/api/category/'+id)
                             .then(() => {
-                                this.employees = this.employees.filter(employee => {
-                                    return employee.id != id
+                                this.categories = this.categories.filter(category => {
+                                    return category.id != id
                                 })
                             })
                             .catch(() => {
-                                this.$router.push({name: 'employee'})
+                                this.$router.push({name: 'category'})
                             })
                         Swal.fire(
                             'Deleted!',
@@ -100,12 +92,12 @@
             if (!User.loggedIn()) {
                 this.$router.push({name: '/'})
             }
-            this.allEmployee(); // load get employee
+            this.allCategory(); // load get category
         },
         computed:{
             filtersearch(){
-                return this.employees.filter(employee => {
-                    return employee.name.match(this.searchTerm)
+                return this.categories.filter(category => {
+                    return category.category_name.match(this.searchTerm)
                 })
             }
         },
@@ -113,8 +105,5 @@
 </script>
 
 <style scoped>
-    #em_photo{
-        height: 40px;
-        width: 40px;
-    }
+
 </style>
