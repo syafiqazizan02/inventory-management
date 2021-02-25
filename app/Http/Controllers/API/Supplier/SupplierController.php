@@ -57,7 +57,7 @@ class SupplierController extends Controller
             $supplier->phone = $request->phone;
             $supplier->shop = $request->shop;
             $supplier->address = $request->address;
-            $supplier->code = 'SP'.$request->code;
+            $supplier->code = $request->code;
             $supplier->photo = $image_url;
             $supplier->save();
         }else{
@@ -69,7 +69,7 @@ class SupplierController extends Controller
             $supplier->phone = $request->phone;
             $supplier->shop = $request->shop;
             $supplier->address = $request->address;
-            $supplier->code = 'SP'.$request->code;
+            $supplier->code = $request->code;
             $supplier->save();
         }
 
@@ -97,7 +97,40 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['phone'] = $request->phone;
+        $data['shop'] = $request->shop;
+        $data['address'] = $request->address;
+        $data['code'] = $request->code;
+        $image = $request->newphoto;
+
+        if ($image) {
+            $position = strpos($image, ';');
+            $sub = substr($image, 0, $position);
+            $ext = explode('/', $sub)[1];
+
+            $name = time().".".$ext;
+            $img = Image::make($image)->resize(240,200);
+            $upload_path = 'backend/supplier/';
+            $image_url = $upload_path.$name;
+            $success = $img->save($image_url);
+
+            if ($success) {
+                $data['photo'] = $image_url;
+                $img = Employee::where('id',$id)->first();
+                $image_path = $img->photo;
+                $done = unlink($image_path);
+                $supplier = Supplier::where('id',$id)->update($data);
+            }
+
+        }else{
+            $oldphoto = $request->photo;
+            $data['photo'] = $oldphoto;
+            $supplier = Supplier::where('id',$id)->update($data);
+        }
+
     }
 
     /**
@@ -108,6 +141,14 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supplier = Supplier::where('id',$id)->first();
+        $photo = $supplier->photo;
+
+        if ($photo) {
+            unlink($photo);
+            Supplier::where('id',$id)->delete();
+        }else{
+            Supplier::where('id',$id)->delete();
+        }
     }
 }

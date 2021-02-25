@@ -59,7 +59,7 @@ class EmployeeController extends Controller
             $employee->phone = $request->phone;
             $employee->salary = $request->salary;
             $employee->address = $request->address;
-            $employee->code = 'EM'.$request->code;
+            $employee->code = $request->code;
             $employee->joining_date = Carbon::now()->toDateTimeString();
             $employee->photo = $image_url;
             $employee->save(['timestamps' => false]);
@@ -72,7 +72,7 @@ class EmployeeController extends Controller
             $employee->phone = $request->phone;
             $employee->salary = $request->salary;
             $employee->address = $request->address;
-            $employee->code = 'EM'.$request->code;
+            $employee->code = $request->code;
             $employee->joining_date = Carbon::now()->toDateTimeString();
             $employee->save(['timestamps' => false]);
         }
@@ -107,7 +107,6 @@ class EmployeeController extends Controller
         $data['salary'] = $request->salary;
         $data['address'] = $request->address;
         $data['code'] = $request->code;
-//        $data['joining_date'] = $request->joining_date;
         $image = $request->newphoto;
 
         if ($image) {

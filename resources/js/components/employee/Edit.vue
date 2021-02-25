@@ -16,26 +16,26 @@
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <input type="text" class="form-control" id="exampleInputName"
-                                                           placeholder="Enter Name" v-model="form.name">
+                                                           placeholder="Full Name" v-model="form.name">
                                                     <small class="text-danger" v-if="errors.name"> {{ errors.name[0]}} </small>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="email" class="form-control" id="exampleInputEmail"
-                                                           placeholder="Enter Email" v-model="form.email">
-                                                    <small class="text-danger" v-if="errors.email"> {{ errors.email[0]}} </small>
+                                                    <input type="text" class="form-control" id="exampleInputCode"
+                                                           placeholder="Employee Code" v-model="form.code">
+                                                    <small class="text-danger" v-if="errors.code"> {{ errors.code[0]}} </small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputIC"
-                                                           placeholder="Enter IC" v-model="form.ic">
-                                                    <small class="text-danger" v-if="errors.ic"> {{ errors.ic[0]}} </small>
+                                                    <input type="email" class="form-control" id="exampleInputEmail"
+                                                           placeholder="Email Address" v-model="form.email">
+                                                    <small class="text-danger" v-if="errors.email"> {{ errors.email[0]}} </small>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="text" class="form-control" id="exampleInputPhone"
-                                                           placeholder="Enter Phone" v-model="form.phone">
+                                                           placeholder="Phone Number" v-model="form.phone">
                                                     <small class="text-danger" v-if="errors.phone"> {{ errors.phone[0]}} </small>
                                                 </div>
                                             </div>
@@ -44,12 +44,12 @@
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <input type="text" class="form-control" id="exampleInputAddress"
-                                                           placeholder="Enter Address" v-model="form.address">
+                                                           placeholder="Residence Address" v-model="form.address">
                                                     <small class="text-danger" v-if="errors.address"> {{ errors.address[0] }} </small>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="text" class="form-control" id="exampleInputSalary"
-                                                           placeholder="Enter Salary" v-model="form.salary">
+                                                           placeholder="Monthly Salary" v-model="form.salary">
                                                     <small class="text-danger" v-if="errors.salary"> {{ errors.salary[0] }} </small>
                                                 </div>
                                             </div>
@@ -61,16 +61,11 @@
                                                            @change="onFileSelected">
                                                     <small class="text-danger" v-if="errors.photo"> {{ errors.photo[0]}} </small>
                                                     <label class="custom-file-label" for="customFile">Choose
-                                                        File</label>
+                                                        File
+                                                    </label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <img :src="form.photo" style="height: 30px; width: 30px;">
-                                                </div>
-                                                <div class="col-md-5">
-                                                    Datetime Problem
-                                                    <input type="date" class="form-control" id="exampleInputDate"
-                                                           placeholder="Enter Joining Date" v-model="form.joining_date">
-                                                    <small class="text-danger" v-if="errors.joining_date"> {{ errors.joining_date[0] }} </small>
+                                                    <img :src="form.photo" style="height: 40px; width: 40px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -94,15 +89,14 @@ export default {
     data() {
         return {
             form: {
-                name: '',
-                email: '',
-                phone: '',
-                salary: '',
-                address: '',
-                photo: '',
-                newphoto: '',
-                ic: '',
-                joining_date: ''
+                name: "",
+                code: "",
+                email: "",
+                phone: "",
+                salary: "",
+                address: "",
+                photo: "",
+                newphoto: ""
             },
             errors: {}
         };
@@ -122,7 +116,8 @@ export default {
         },
         employeeUpdate() {
             let id = this.$route.params.id;
-            axios.patch("/api/employee/" + id, this.form)
+            axios
+                .patch("/api/employee/" + id, this.form)
                 .then(() => {
                     this.$router.push({ name: "employee" });
                     Notification.success();
