@@ -14,7 +14,7 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control" id="exampleInputEmail"
                                                    aria-describedby="emailHelp"
-                                                   placeholder="Enter Existing Email Address">
+                                                   placeholder="Enter Existing Email">
                                         </div>
                                         <div class="form-group">
                                             <a href="index.html" class="btn btn-primary btn-block">Submit</a>

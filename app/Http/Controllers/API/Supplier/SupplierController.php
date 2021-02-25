@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\Supplier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
-use Carbon\Carbon;
 
 class SupplierController extends Controller
 {
@@ -84,7 +83,9 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+        $supplier = Supplier::where('id',$id)->first();
+
+        return response()->json($supplier);
     }
 
     /**

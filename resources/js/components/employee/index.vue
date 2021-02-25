@@ -17,7 +17,7 @@
                                         <table class="table align-items-center table-flush">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Photo</th>
+                                                <!--<th>Photo</th>-->
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Salary</th>
@@ -27,7 +27,7 @@
                                             </thead>
                                             <tbody>
                                             <tr v-for="employee in filtersearch" :key="employee.id">
-                                                <td><img :src="employee.photo" id="em_photo"></td>
+                                                <!--<td><img :src="employee.photo" id="em_photo"></td>-->
                                                 <td> {{ employee.name }}</td>
                                                 <td>{{ employee.phone }}</td>
                                                 <td>{{ employee.salary }}</td>
@@ -100,7 +100,6 @@
             if (!User.loggedIn()) {
                 this.$router.push({name: '/'})
             }
-
             this.allEmployee(); // load get employee
         },
         computed:{
