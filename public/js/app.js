@@ -3066,13 +3066,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {
         name: "",
-        code: "",
         email: "",
         phone: "",
         salary: "",
@@ -3511,13 +3509,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {
         name: "",
-        code: "",
         email: "",
         phone: "",
         shop: "",
@@ -49052,7 +49048,8 @@ var render = function() {
                               attrs: {
                                 type: "text",
                                 id: "exampleInputCode",
-                                placeholder: "Employee Code"
+                                placeholder: "Employee Code",
+                                readonly: ""
                               },
                               domProps: { value: _vm.form.code },
                               on: {
@@ -49067,13 +49064,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.code
-                              ? _c("small", { staticClass: "text-danger" }, [
-                                  _vm._v(" " + _vm._s(_vm.errors.code[0]) + " ")
-                                ])
-                              : _vm._e()
+                            })
                           ])
                         ])
                       ]),
@@ -49950,7 +49941,8 @@ var render = function() {
                               attrs: {
                                 type: "text",
                                 id: "exampleInputCode",
-                                placeholder: "Employee Code"
+                                placeholder: "Employee Code",
+                                readonly: ""
                               },
                               domProps: { value: _vm.form.code },
                               on: {
@@ -49965,13 +49957,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.code
-                              ? _c("small", { staticClass: "text-danger" }, [
-                                  _vm._v(" " + _vm._s(_vm.errors.code[0]) + " ")
-                                ])
-                              : _vm._e()
+                            })
                           ])
                         ])
                       ]),

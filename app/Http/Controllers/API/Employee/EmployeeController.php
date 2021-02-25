@@ -76,6 +76,9 @@ class EmployeeController extends Controller
             $employee->joining_date = Carbon::now()->toDateTimeString();
             $employee->save(['timestamps' => false]);
         }
+
+        return response()->json($employee);
+
     }
 
     /**
@@ -100,13 +103,20 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'salary' => 'required',
+            'address' => 'required',
+        ]);
+
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
         $data['salary'] = $request->salary;
         $data['address'] = $request->address;
-        $data['code'] = $request->code;
         $image = $request->newphoto;
 
         if ($image) {

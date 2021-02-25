@@ -73,6 +73,8 @@ class SupplierController extends Controller
             $supplier->save();
         }
 
+        return response()->json($supplier);
+
     }
 
     /**
@@ -97,13 +99,20 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'shop' => 'required',
+            'address' => 'required',
+        ]);
+
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
         $data['shop'] = $request->shop;
         $data['address'] = $request->address;
-        $data['code'] = $request->code;
         $image = $request->newphoto;
 
         if ($image) {

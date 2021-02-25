@@ -21,8 +21,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="text" class="form-control" id="exampleInputCode"
-                                                           placeholder="Employee Code" v-model="form.code">
-                                                    <small class="text-danger" v-if="errors.code"> {{ errors.code[0]}} </small>
+                                                           placeholder="Employee Code" v-model="form.code" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,7 +89,6 @@ export default {
         return {
             form: {
                 name: "",
-                code: "",
                 email: "",
                 phone: "",
                 salary: "",
