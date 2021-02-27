@@ -131,9 +131,9 @@ class EmployeeController extends Controller
             $success = $img->save($image_url);
 
             if ($success) {
-                $data['photo'] = $image_url;
+                echo $data['photo'] = $image_url;
                 $img = Employee::where('id',$id)->first();
-                $image_path = $img->photo;
+                echo $image_path = $img->photo;
                 $done = unlink($image_path);
                 $employee  = Employee::where('id',$id)->update($data);
             }
@@ -155,7 +155,7 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         $employee = Employee::where('id',$id)->first();
-        $photo = $employee->photo;
+        echo $photo = $employee->photo;
 
         if ($photo) {
             unlink($photo);
