@@ -21,6 +21,7 @@ let Product = require('./components/product/Index.vue').default;
 let EditProduct = require('./components/product/Edit.vue').default;
 
 export const routes = [
+
     { path: '/', component: Login, name:'/'},
     { path: '/register', component: Register, name:'register'},
     { path: '/forget', component: Forget, name:'forget'},
