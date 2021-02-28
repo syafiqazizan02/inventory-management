@@ -40,19 +40,6 @@
                     Features
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"
-                       aria-expanded="true" aria-controls="collapseBootstrap1">
-                        <i class="far fa-fw fa-window-maximize"></i>
-                        <span>Employee</span>
-                    </a>
-                    <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <router-link to="/new-employee" class="collapse-item">New Employee</router-link>
-                            <router-link to="/employee" class="collapse-item">View Employees</router-link>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
                        aria-expanded="true" aria-controls="collapseBootstrap2">
                         <i class="far fa-fw fa-window-maximize"></i>
@@ -101,6 +88,32 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <router-link to="new-expense" class="collapse-item">New Expense</router-link>
                             <router-link to="expense" class="collapse-item">View Expenses</router-link>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"
+                       aria-expanded="true" aria-controls="collapseBootstrap1">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Employee</span>
+                    </a>
+                    <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <router-link to="/new-employee" class="collapse-item">New Employee</router-link>
+                            <router-link to="/employee" class="collapse-item">View Employees</router-link>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap6"
+                       aria-expanded="true" aria-controls="collapseBootstrap6">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Salary</span>
+                    </a>
+                    <div id="collapseBootstrap6" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <router-link to="pay-salary" class="collapse-item">Pay Salary</router-link>
+                            <router-link to="salary" class="collapse-item">View Salary</router-link>
                         </div>
                     </div>
                 </li>

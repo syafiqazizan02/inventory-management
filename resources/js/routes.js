@@ -24,6 +24,11 @@ let NewExpense = require('./components/expense/Create.vue').default;
 let Expense = require('./components/expense/Index.vue').default;
 let EditExpense = require('./components/expense/Edit.vue').default;
 
+let PaySalary = require('./components/salary/PaySalary.vue').default;
+let PayNowSalary = require('./components/salary/PayNowSalary.vue').default;
+let Salary = require('./components/salary/Index.vue').default;
+let DetailsSalary = require('./components/salary/DetailsSalary.vue').default;
+
 export const routes = [
 
     { path: '/', component: Login, name:'/'},
@@ -51,5 +56,10 @@ export const routes = [
     { path: '/new-expense', component: NewExpense, name:'new-expense'},
     { path: '/expense', component: Expense, name:'expense'},
     { path: '/edit-expense/:id', component: EditExpense, name:'edit-expense'},
+
+    { path: '/pay-salary', component: PaySalary, name:'pay-salary'},
+    { path: '/pay-now-salary/:id', component: PayNowSalary, name:'pay-now-salary'},
+    { path: '/salary', component: Salary, name:'salary'},
+    { path: '/details-salary', component: DetailsSalary, name:'details-salary'},
 
 ]
