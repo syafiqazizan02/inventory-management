@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Supplier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use Image;
 
 class SupplierController extends Controller
 {
@@ -128,9 +129,9 @@ class SupplierController extends Controller
 
             if ($success) {
                 $data['photo'] = $image_url;
-                $img = Employee::where('id',$id)->first();
+                $img = Supplier::where('id',$id)->first();
                 $image_path = $img->photo;
-                $done = unlink($image_path);
+//                $done = unlink($image_path);
                 $supplier = Supplier::where('id',$id)->update($data);
             }
 

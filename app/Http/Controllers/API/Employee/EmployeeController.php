@@ -131,10 +131,10 @@ class EmployeeController extends Controller
             $success = $img->save($image_url);
 
             if ($success) {
-                echo $data['photo'] = $image_url;
+                $data['photo'] = $image_url;
                 $img = Employee::where('id',$id)->first();
-                echo $image_path = $img->photo;
-                $done = unlink($image_path);
+                $image_path = $img->photo;
+//                $done = unlink($image_path);
                 $employee  = Employee::where('id',$id)->update($data);
             }
 

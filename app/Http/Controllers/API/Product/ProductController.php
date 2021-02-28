@@ -151,7 +151,7 @@ class ProductController extends Controller
                 $data['product_image'] = $image_url;
                 $img = Product::where('id',$id)->first();
                 $image_path = $img->product_image;
-                $done = unlink($image_path);
+//                $done = unlink($image_path);
                 $user  = Product::where('id',$id)->update($data);
             }
 

@@ -55,12 +55,15 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="form-row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-2">
+                                                    <label>Supplier Image :</label>
+                                                </div>
+                                                <div class="col-md-3">
                                                     <input type="file" class="custom-file-input" id="customFile"
                                                            @change="onFileSelected">
                                                     <small class="text-danger" v-if="errors.photo"> {{ errors.photo[0]}} </small>
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        File
+                                                    <label class="custom-file-label" for="customFile">
+                                                        Choose File
                                                     </label>
                                                 </div>
                                                 <div class="col-md-1">
