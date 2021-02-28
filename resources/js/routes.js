@@ -20,6 +20,10 @@ let NewProduct = require('./components/product/Create.vue').default;
 let Product = require('./components/product/Index.vue').default;
 let EditProduct = require('./components/product/Edit.vue').default;
 
+let NewExpense = require('./components/expense/Create.vue').default;
+let Expense = require('./components/expense/Index.vue').default;
+let EditExpense = require('./components/expense/Edit.vue').default;
+
 export const routes = [
 
     { path: '/', component: Login, name:'/'},
@@ -43,5 +47,9 @@ export const routes = [
     { path: '/new-product', component: NewProduct, name:'new-product'},
     { path: '/product', component: Product, name:'product'},
     { path: '/edit-product/:id', component: EditProduct, name:'edit-product'},
+
+    { path: '/new-expense', component: NewExpense, name:'new-expense'},
+    { path: '/expense', component: Expense, name:'expense'},
+    { path: '/edit-expense/:id', component: EditExpense, name:'edit-expense'},
 
 ]

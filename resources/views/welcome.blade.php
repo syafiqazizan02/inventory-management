@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="{{ asset('backend/img/logo/logo.png') }}" rel="icon">
-    <title>RuangAdmin - Dashboard</title>
+    <title>Inventory System</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
     <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -21,11 +21,13 @@
         <!-- Sidebar -->
         <nav id="sidebar" v-show="$route.path === '/' || $route.path === '/register' || $route.path === '/forget' ? false : true" style="display: none;">
             <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+
+
                 <router-link to="/home" class="sidebar-brand d-flex align-items-center justify-content-center">
                     <div class="sidebar-brand-icon">
                         <img src="{{ asset('backend/img/logo/logo2.png') }}">
                     </div>
-                    <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+                    <div class="sidebar-brand-text mx-3">Inventory System</div>
                 </router-link>
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item active">
@@ -89,6 +91,32 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
+                       aria-expanded="true" aria-controls="collapseBootstrap5">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Expense</span>
+                    </a>
+                    <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <router-link to="new-expense" class="collapse-item">New Expense</router-link>
+                            <router-link to="expense" class="collapse-item">View Expenses</router-link>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="forms.html">
