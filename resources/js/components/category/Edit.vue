@@ -15,8 +15,8 @@
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputName"
-                                                           placeholder="Full Name" v-model="form.category_name">
+                                                    <label>Category Name :</label>
+                                                    <input type="text" class="form-control" id="exampleInputCategoryName" v-model="form.category_name">
                                                     <small class="text-danger" v-if="errors.category_name"> {{ errors.category_name[0]}} </small>
                                                 </div>
                                             </div>

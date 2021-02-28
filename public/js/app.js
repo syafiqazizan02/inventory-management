@@ -2566,11 +2566,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4121,6 +4116,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -49169,6 +49167,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Category Name :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -49181,8 +49181,7 @@ var render = function() {
                               staticClass: "form-control",
                               attrs: {
                                 type: "text",
-                                id: "exampleInputName",
-                                placeholder: "Category Name"
+                                id: "exampleInputCategoryName"
                               },
                               domProps: { value: _vm.form.category_name },
                               on: {
@@ -49299,6 +49298,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Category Name :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -49311,8 +49312,7 @@ var render = function() {
                               staticClass: "form-control",
                               attrs: {
                                 type: "text",
-                                id: "exampleInputName",
-                                placeholder: "Full Name"
+                                id: "exampleInputCategoryName"
                               },
                               domProps: { value: _vm.form.category_name },
                               on: {
@@ -52201,6 +52201,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Full Name :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52211,11 +52213,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputName",
-                                placeholder: "Full Name"
-                              },
+                              attrs: { type: "text", id: "exampleInputName" },
                               domProps: { value: _vm.form.name },
                               on: {
                                 input: function($event) {
@@ -52239,6 +52237,8 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Supplier Code :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52249,11 +52249,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputCode",
-                                placeholder: "Supplier Code"
-                              },
+                              attrs: { type: "text", id: "exampleInputCode" },
                               domProps: { value: _vm.form.code },
                               on: {
                                 input: function($event) {
@@ -52281,6 +52277,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Email Address :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52291,11 +52289,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "email",
-                                id: "exampleInputEmail",
-                                placeholder: "Email Address"
-                              },
+                              attrs: { type: "email", id: "exampleInputEmail" },
                               domProps: { value: _vm.form.email },
                               on: {
                                 input: function($event) {
@@ -52321,6 +52315,8 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Phone Number :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52331,11 +52327,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputPhone",
-                                placeholder: "Phone Number"
-                              },
+                              attrs: { type: "text", id: "exampleInputPhone" },
                               domProps: { value: _vm.form.phone },
                               on: {
                                 input: function($event) {
@@ -52365,6 +52357,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Shop Name :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52375,11 +52369,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputSalary",
-                                placeholder: "Shop Name"
-                              },
+                              attrs: { type: "text", id: "exampleInputSalary" },
                               domProps: { value: _vm.form.shop },
                               on: {
                                 input: function($event) {
@@ -52403,6 +52393,8 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Shop Address :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52415,8 +52407,7 @@ var render = function() {
                               staticClass: "form-control",
                               attrs: {
                                 type: "text",
-                                id: "exampleInputAddress",
-                                placeholder: "Shop Address"
+                                id: "exampleInputAddress"
                               },
                               domProps: { value: _vm.form.address },
                               on: {
@@ -52446,7 +52437,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
-                          _c("div", { staticClass: "col-md-5" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-3" }, [
                             _c("input", {
                               staticClass: "custom-file-input",
                               attrs: { type: "file", id: "customFile" },
@@ -52486,7 +52479,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("hr"),
                       _vm._v(" "),
-                      _vm._m(1)
+                      _vm._m(2)
                     ]
                   )
                 ])
@@ -52507,6 +52500,14 @@ var staticRenderFns = [
       _c("h1", { staticClass: "h4 text-gray-900 mb-4" }, [
         _vm._v("New Supplier")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c("label", [_vm._v("Supplier Image :")])
     ])
   },
   function() {
@@ -52571,6 +52572,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Full Name :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52581,11 +52584,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputName",
-                                placeholder: "Full Name"
-                              },
+                              attrs: { type: "text", id: "exampleInputName" },
                               domProps: { value: _vm.form.name },
                               on: {
                                 input: function($event) {
@@ -52609,6 +52608,8 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Supplier Code :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52619,12 +52620,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputCode",
-                                placeholder: "Employee Code",
-                                readonly: ""
-                              },
+                              attrs: { type: "text", id: "exampleInputCode" },
                               domProps: { value: _vm.form.code },
                               on: {
                                 input: function($event) {
@@ -52638,7 +52634,13 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.errors.code
+                              ? _c("small", { staticClass: "text-danger" }, [
+                                  _vm._v(" " + _vm._s(_vm.errors.code[0]) + " ")
+                                ])
+                              : _vm._e()
                           ])
                         ])
                       ]),
@@ -52646,6 +52648,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Email Address :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52656,11 +52660,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "email",
-                                id: "exampleInputEmail",
-                                placeholder: "Email Address"
-                              },
+                              attrs: { type: "email", id: "exampleInputEmail" },
                               domProps: { value: _vm.form.email },
                               on: {
                                 input: function($event) {
@@ -52686,6 +52686,8 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Phone Number :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52696,11 +52698,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputPhone",
-                                placeholder: "Phone Number"
-                              },
+                              attrs: { type: "text", id: "exampleInputPhone" },
                               domProps: { value: _vm.form.phone },
                               on: {
                                 input: function($event) {
@@ -52730,6 +52728,8 @@ var render = function() {
                       _c("div", { staticClass: "form-group" }, [
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Shop Name :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52740,11 +52740,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "exampleInputSalary",
-                                placeholder: "Shop Name"
-                              },
+                              attrs: { type: "text", id: "exampleInputSalary" },
                               domProps: { value: _vm.form.shop },
                               on: {
                                 input: function($event) {
@@ -52768,6 +52764,8 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
+                            _c("label", [_vm._v("Shop Address :")]),
+                            _vm._v(" "),
                             _c("input", {
                               directives: [
                                 {
@@ -52780,8 +52778,7 @@ var render = function() {
                               staticClass: "form-control",
                               attrs: {
                                 type: "text",
-                                id: "exampleInputAddress",
-                                placeholder: "Shop Address"
+                                id: "exampleInputAddress"
                               },
                               domProps: { value: _vm.form.address },
                               on: {
@@ -52836,7 +52833,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                                                    Choose File\n                                                "
+                                  "Choose\n                                                    File"
                                 )
                               ]
                             )

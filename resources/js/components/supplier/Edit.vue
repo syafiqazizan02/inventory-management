@@ -15,26 +15,27 @@
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputName"
-                                                           placeholder="Full Name" v-model="form.name">
+                                                    <label>Full Name :</label>
+                                                    <input type="text" class="form-control" id="exampleInputName" v-model="form.name">
                                                     <small class="text-danger" v-if="errors.name"> {{ errors.name[0]}} </small>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputCode"
-                                                           placeholder="Employee Code" v-model="form.code" readonly>
+                                                    <label>Supplier Code :</label>
+                                                    <input type="text" class="form-control" id="exampleInputCode" v-model="form.code">
+                                                    <small class="text-danger" v-if="errors.code"> {{ errors.code[0]}} </small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="email" class="form-control" id="exampleInputEmail"
-                                                           placeholder="Email Address" v-model="form.email">
+                                                    <label>Email Address :</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail" v-model="form.email">
                                                     <small class="text-danger" v-if="errors.email"> {{ errors.email[0]}} </small>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputPhone"
-                                                           placeholder="Phone Number" v-model="form.phone">
+                                                    <label>Phone Number :</label>
+                                                    <input type="text" class="form-control" id="exampleInputPhone" v-model="form.phone">
                                                     <small class="text-danger" v-if="errors.phone"> {{ errors.phone[0]}} </small>
                                                 </div>
                                             </div>
@@ -42,13 +43,13 @@
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputSalary"
-                                                           placeholder="Shop Name" v-model="form.shop">
+                                                    <label>Shop Name :</label>
+                                                    <input type="text" class="form-control" id="exampleInputSalary" v-model="form.shop">
                                                     <small class="text-danger" v-if="errors.shop"> {{ errors.shop[0] }} </small>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputAddress"
-                                                           placeholder="Shop Address" v-model="form.address">
+                                                    <label>Shop Address :</label>
+                                                    <input type="text" class="form-control" id="exampleInputAddress" v-model="form.address">
                                                     <small class="text-danger" v-if="errors.address"> {{ errors.address[0] }} </small>
                                                 </div>
                                             </div>
@@ -62,9 +63,8 @@
                                                     <input type="file" class="custom-file-input" id="customFile"
                                                            @change="onFileSelected">
                                                     <small class="text-danger" v-if="errors.photo"> {{ errors.photo[0]}} </small>
-                                                    <label class="custom-file-label" for="customFile">
-                                                        Choose File
-                                                    </label>
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        File</label>
                                                 </div>
                                                 <div class="col-md-1">
                                                     <img :src="form.photo" style="height: 40px; width: 40px;">
