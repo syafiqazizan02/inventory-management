@@ -21,4 +21,4 @@ Route::apiResource('/category', 'API\Category\CategoryController');
 Route::apiResource('/product', 'API\Product\ProductController');
 Route::apiResource('/expense', 'API\Expense\ExpenseController');
 
-
+Route::post('/salary/pay-now/{id}', 'API\Salary\SalaryController@PayNow');
