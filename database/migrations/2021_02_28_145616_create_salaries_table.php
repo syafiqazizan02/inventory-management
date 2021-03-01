@@ -16,10 +16,10 @@ class CreateSalariesTable extends Migration
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id');
-            $table->string('amount');
-            $table->string('salary_date')->nullable();
+            $table->double('amount', 15, 8);
+            $table->datetime('salary_date')->nullable();
             $table->string('salary_month')->nullable();
-            $table->string('salary_year')->nullable();
+            $table->year('salary_year')->nullable();
             $table->timestamps();
         });
     }

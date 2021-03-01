@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Salary;
 use Carbon\Carbon;
+//use DB;
 
 class SalaryController extends Controller
 {
-    public function PayNow(Request $request,$id){
-
+    public function PayNow(Request $request,$id)
+    {
         $validateData = $request->validate([
             'salary' => 'required',
             'salary_month' => 'required',
@@ -18,8 +19,6 @@ class SalaryController extends Controller
 
         $month = $request->salary_month;
         $check = Salary::where('employee_id',$id)->where('salary_month',$month)->first();
-
-//        dd($check);
 
         if ($check) {
             return response()->json('Salary Already Paid!');
@@ -36,61 +35,56 @@ class SalaryController extends Controller
 
             return response()->json($salary);
         }
-
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function AllSalary()
     {
-        //
+        $salary = Salary::select('salary_month')
+                    ->groupBy('salary_month')
+                    ->get();
+
+        return response()->json($salary);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function ViewSalary($id)
     {
-        //
+        $month = $id;
+
+        $view = Salary::join('employees','salaries.employee_id','employees.id')
+                    ->select('employees.name','salaries.*')
+                    ->where('salaries.salary_month',$month)
+                    ->get();
+
+        return response()->json($view);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function EditSalary($id)
     {
-        //
+        $view = Salary::join('employees','salaries.employee_id','employees.id')
+                    ->select('employees.name','employees.code','salaries.*')
+                    ->where('salaries.id',$id)
+                    ->first();
+
+        return response()->json($view);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function SalaryUpdate(Request $request, $id)
     {
-        //
+        $validateData = $request->validate([
+            'amount' => 'required',
+            'salary_month' => 'required',
+        ]);
+
+        // Need Checking Already Paid
+
+        $data = array();
+        $data['employee_id'] = $request->employee_id;
+        $data['amount'] = $request->amount;
+        $data['salary_month'] = $request->salary_month;
+
+        Salary::where('id',$id)->update($data);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
+
 }

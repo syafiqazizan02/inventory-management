@@ -8,7 +8,7 @@
                             <div class="col-lg-12">
                                 <div class="login-form">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">View Salary by Months</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">View Salary</h1>
                                     </div>
                                     <hr>
                                     <input type="text" v-model="searchTerm" class="form-control"
@@ -17,15 +17,21 @@
                                         <table class="table align-items-center table-flush">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Month Name</th>
+                                                <th>Name</th>
+                                                <th>Month</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                                 <tr v-for="salary in filtersearch" :key="salary.id">
-                                                    <td> {{ salary.salary_month }} </td>
+                                                    <td>{{ salary.name }}</td>
+                                                    <td>{{ salary.salary_month }}</td>
+                                                    <td>{{ salary.amount }}</td>
+                                                    <td>{{ salary.salary_date }}</td>
                                                     <td>
-                                                        <router-link :to="{name: 'details-salary', params:{id:salary.salary_month}}" class="btn btn-sm btn-primary">Details</router-link>
+                                                        <router-link :to="{name: 'edit-salary', params:{id:salary.id}}" class="btn btn-sm btn-primary">Edit</router-link>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -50,22 +56,23 @@
             }
         },
         methods:{
-            allSalary(){
-                axios.get('/api/salary/')
+            viewSalary(){
+                let id = this.$route.params.id
+                axios.get('/api/salary/view/'+id)
                     .then(({data}) => (this.salaries = data))
-                    .catch()
+                    .catch(error =>this.errors = error.response.data.errors)
             }
         },
         created(){
             if (!User.loggedIn()) {
                 this.$router.push({name: '/'})
             }
-            this.allSalary(); // load get salaries
+            this.viewSalary(); // load get salaries
         },
         computed:{
             filtersearch(){
                 return this.salaries.filter(salary => {
-                    return salary.salary_month.match(this.searchTerm)
+                    return salary.name.match(this.searchTerm)
                 })
             }
         }
