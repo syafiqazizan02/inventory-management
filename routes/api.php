@@ -16,14 +16,11 @@ Route::group([
 });
 
 Route::apiResource('/employee', 'API\Employee\EmployeeController');
-
 Route::apiResource('/supplier', 'API\Supplier\SupplierController');
-
 Route::apiResource('/category', 'API\Category\CategoryController');
-
 Route::apiResource('/product', 'API\Product\ProductController');
-
 Route::apiResource('/expense', 'API\Expense\ExpenseController');
+Route::apiResource('/customer', 'API\Customer\CustomerController');
 
 Route::post('/salary/pay-now/{id}', 'API\Salary\SalaryController@PayNow');
 Route::get('/salary', 'API\Salary\SalaryController@AllSalary');

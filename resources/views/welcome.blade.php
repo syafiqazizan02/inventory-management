@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="{{ asset('backend/img/logo/logo.png') }}" rel="icon">
-    <title>Inventory System</title>
+    <title>Inventory Management</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
     <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
                     <div class="sidebar-brand-icon">
                         <img src="{{ asset('backend/img/logo/logo2.png') }}">
                     </div>
-                    <div class="sidebar-brand-text mx-3">Inventory System</div>
+                    <div class="sidebar-brand-text mx-3">Inventory Management</div>
                 </router-link>
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item active">
@@ -39,6 +39,29 @@
                 <div class="sidebar-heading">
                     Features
                 </div>
+                <li class="nav-item">
+                    <router-link to="/" class="nav-link">
+                        <i class="fab fa-fw fa-wpforms"></i>
+                        <span>POS</span>
+                    </router-link>
+                </li>
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">
+                    Features
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap7"
+                       aria-expanded="true" aria-controls="collapseBootstrap7">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Customer</span>
+                    </a>
+                    <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <router-link to="new-customer" class="collapse-item">New Customer</router-link>
+                            <router-link to="customer" class="collapse-item">View Customers</router-link>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
                        aria-expanded="true" aria-controls="collapseBootstrap2">
@@ -123,64 +146,46 @@
                         </div>
                     </div>
                 </li>
-
-
-
-
-
-
-
-
-
-
-
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-                       aria-controls="collapseTable">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap8"
+                       aria-expanded="true" aria-controls="collapseBootstrap8">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Report</span>
                     </a>
-                    <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div id="collapseBootstrap8" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Tables</h6>
-                            <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
-                            <a class="collapse-item" href="datatables.html">DataTables</a>
+                            <router-link to="/" class="collapse-item">Reports</router-link>
+                            <router-link to="/" class="collapse-item">Reports</router-link>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ui-colors.html">
-                        <i class="fas fa-fw fa-palette"></i>
-                        <span>UI Colors</span>
-                    </a>
-                </li>
                 <hr class="sidebar-divider">
-                <div class="sidebar-heading">
-                    Examples
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
-                       aria-controls="collapsePage">
-                        <i class="fas fa-fw fa-columns"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Example Pages</h6>
-                            <a class="collapse-item" href="login.html">Login</a>
-                            <a class="collapse-item" href="register.html">Register</a>
-                            <a class="collapse-item" href="404.html">404 Page</a>
-                            <a class="collapse-item" href="blank.html">Blank Page</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span>
-                    </a>
-                </li>
-                <hr class="sidebar-divider">
+{{--                <div class="sidebar-heading">--}}
+{{--                    Examples--}}
+{{--                </div>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"--}}
+{{--                       aria-controls="collapsePage">--}}
+{{--                        <i class="fas fa-fw fa-columns"></i>--}}
+{{--                        <span>Pages</span>--}}
+{{--                    </a>--}}
+{{--                    <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">--}}
+{{--                        <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                            <h6 class="collapse-header">Example Pages</h6>--}}
+{{--                            <a class="collapse-item" href="login.html">Login</a>--}}
+{{--                            <a class="collapse-item" href="register.html">Register</a>--}}
+{{--                            <a class="collapse-item" href="404.html">404 Page</a>--}}
+{{--                            <a class="collapse-item" href="blank.html">Blank Page</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="charts.html">--}}
+{{--                        <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--                        <span>Charts</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <hr class="sidebar-divider">--}}
                 <div class="version" id="version-ruangadmin"></div>
             </ul>
         </nav>
