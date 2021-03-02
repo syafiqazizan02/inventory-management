@@ -180,4 +180,12 @@ class ProductController extends Controller
             Product::where('id',$id)->delete();
         }
     }
+
+
+    public function StockUpdate(Request $request,$id)
+    {
+        $data = array();
+        $data['product_quantity'] = $request->product_quantity;
+        Product::where('id',$id)->update($data);
+    }
 }

@@ -79,6 +79,12 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <router-link to="/stock" class="nav-link">
+                        <i class="fab fa-fw fa-wpforms"></i>
+                        <span>Stock</span>
+                    </router-link>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
                        aria-expanded="true" aria-controls="collapseBootstrap5">
                         <i class="far fa-fw fa-window-maximize"></i>
@@ -128,15 +134,6 @@
 
 
 
-
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="forms.html">
-                        <i class="fab fa-fw fa-wpforms"></i>
-                        <span>Forms</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
                        aria-controls="collapseTable">
