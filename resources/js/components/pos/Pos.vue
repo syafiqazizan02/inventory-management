@@ -33,20 +33,78 @@
                 <div class="col-xl-5 col-lg-5">
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h5 class="m-0 text-gray-900">Monthly Recap Report</h5>
+                            <h5 class="m-0 text-gray-900">Expenses Insert</h5>
+<!--                            <a class="btn btn-info" style="color: white">Add Customer</a>-->
                         </div>
-                        <div class="card-body">
-                            <div class="chart-area">
-                                123
-                            </div>
+
+<!--                        <div class="table-responsive" style="font-size: 12px">-->
+                        <div class="table-responsive" style="font-size: 12px">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Quantity</td>
+                                    <td>Unit</td>
+                                    <td>Total</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary">X</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <div class="card-footer">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">Total Quantity:
+                                    <strong>10</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">Sub Total:
+                                    <strong>10</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">Vat:
+                                    <strong>10</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">Total:
+                                    <strong>10</strong>
+                                </li>
+                            </ul>
+                            <br><br>
+                            <form>
+                                <label>Customer Name</label>
+                                <select class="form-control" v-model="customer_id">
+                                    <option>ASD</option>
+<!--                                    <option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>-->
+                                </select>
+                                <label>Pay</label>
+                                <input type="text" class="form-control" required="" v-model="pay">
+                                <label>Due</label>
+                                <input type="text" class="form-control" required="" v-model="due">
+                                <label>Pay By</label>
+                                <select class="form-control" v-model="payby">
+                                    <option value="HandCash">Hand Cash </option>
+                                    <option value="Cheaque">Cheaque </option>
+                                    <option value="GiftCard">Gift Card </option>
+                                </select>
+                                <br>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+
+                        </div>
+
                     </div>
                 </div>
 
                 <div class="col-xl-7 col-lg-7">
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h5 class="m-0 text-gray-900">Monthly Recap Report</h5>
+                            <h5 class="m-0 text-gray-900">Products List</h5>
                         </div>
 <!--                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 20px;">-->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
