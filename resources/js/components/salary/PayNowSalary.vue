@@ -88,7 +88,7 @@
         methods: {
             salaryPaid() {
                 let id = this.$route.params.id
-                axios.post('/api/salary/pay-now/'+id,this.form)
+                axios.post('/api/salary/pay/'+id,this.form)
                     .then(() => {
                         this.$router.push({ name: 'pay-salary'})
                         Notification.success()

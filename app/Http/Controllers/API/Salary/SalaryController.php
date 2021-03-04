@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 class SalaryController extends Controller
 {
-    public function PayNow(Request $request,$id)
+    public function PaySalary(Request $request,$id)
     {
         $validateData = $request->validate([
             'salary' => 'required',

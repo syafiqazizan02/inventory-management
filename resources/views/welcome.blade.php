@@ -40,7 +40,7 @@
                     Features
                 </div>
                 <li class="nav-item">
-                    <router-link to="/" class="nav-link">
+                    <router-link to="/pos" class="nav-link">
                         <i class="fab fa-fw fa-wpforms"></i>
                         <span>POS</span>
                     </router-link>
@@ -387,6 +387,22 @@
                 </div>
                 <!---Container Fluid-->
             </div>
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+            <span>copyright &copy; 2021 - developed by
+              <b>
+{{--                  <a href="https://www.easylearningbd.com/" target="_blank">Easy Learning</a>--}}
+              </b>
+            </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer -->
+
         </div>
     </div>
 </div>
