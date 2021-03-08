@@ -30,8 +30,9 @@ Route::post('/stock/update/{id}', 'API\Product\ProductController@StockUpdate'); 
 
 Route::get('/product/get-product/{id}', 'API\Pos\PosController@GetProduct');
 
-Route::Get('/cart/add-to-cart/{id}', 'API\Cart\CartController@AddToCart');
-Route::Get('/cart/cart-product', 'API\Cart\CartController@CartProduct');
-Route::Get('/cart/remove-product/{id}', 'API\Cart\CartController@RemoveProduct');
-Route::Get('/cart/increment/{id}', 'API\Cart\CartController@Increment');
-Route::Get('/cart/decrement/{id}', 'API\Cart\CartController@Decrement');
+Route::get('/cart/add-to-cart/{id}', 'API\Cart\CartController@AddToCart');
+Route::get('/cart/cart-product', 'API\Cart\CartController@CartProduct');
+Route::get('/cart/remove-product/{id}', 'API\Cart\CartController@RemoveProduct');
+Route::get('/cart/increment/{id}', 'API\Cart\CartController@Increment');
+Route::get('/cart/decrement/{id}', 'API\Cart\CartController@Decrement');
+Route::get('/cart/discount', 'API\Cart\CartController@Discount');

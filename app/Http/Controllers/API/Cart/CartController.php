@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Coupon;
 
 class CartController extends Controller
 {
@@ -34,8 +35,6 @@ class CartController extends Controller
                 'sub_total' => $product->selling_price
             ]);
             $data->save();
-
-//            return response()->json($data);
         }
 
     }
@@ -60,8 +59,6 @@ class CartController extends Controller
         $subtotal = $product->pro_quantity * $product->pro_price;
 
         Cart::where('id',$id)->update(['sub_total'=> $subtotal]);
-
-//        return response('Done');
     }
 
     public function Decrement($id)
@@ -72,8 +69,13 @@ class CartController extends Controller
         $subtotal = $product->pro_quantity * $product->pro_price;
 
         Cart::where('id',$id)->update(['sub_total'=> $subtotal]);
+    }
 
-//        return response('Done');
+    public function Discount()
+    {
+        $discount = Coupon::first();
+
+        return response()->json($discount);
     }
 
 

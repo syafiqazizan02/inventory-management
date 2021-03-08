@@ -33,10 +33,11 @@
                                     <td>
                                         <input type="text" style="width: 30px;" :value="cart.pro_quantity" readonly>
                                         <button @click.prevent="increment(cart.id)" class="btn btn-sm btn-success">+</button>
-                                        <button @click.prevent="decrement(cart.id)" class="btn btn-sm btn-danger">-</button>
+                                        <button @click.prevent="decrement(cart.id)" class="btn btn-sm btn-danger" v-if="cart.pro_quantity >= 2">-</button>
+                                        <button class="btn btn-sm btn-danger" v-else="" disabled="">-</button>
                                     </td>
-                                    <td>{{ cart.pro_price }}</td>
-                                    <td>{{ cart.sub_total }}</td>
+                                    <td>RM {{ cart.pro_price }}</td>
+                                    <td>RM {{ cart.sub_total }}</td>
                                     <td>
                                         <a @click="removeProduct(cart.id)" class="btn btn-sm btn-primary" style="color: white">x</a>
                                     </td>
@@ -47,17 +48,14 @@
 
                         <div class="card-footer">
                             <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">Total Quantity:
-                                    <strong>10</strong>
-                                </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">Sub Total:
-                                    <strong>15</strong>
+                                    <strong>RM {{ subtotal }}</strong>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">Vat:
-                                    <strong>5</strong>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">Discount:
+                                    <strong>{{ discounts.discount }} %</strong>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">Total:
-                                    <strong>20</strong>
+                                    <strong>RM {{ total }}</strong>
                                 </li>
                             </ul><br>
 
@@ -107,7 +105,7 @@
                                                     <img :src="product.product_image" id="em_photo" class="card-img-top">
                                                     <div class="card-body">
                                                         <h6 class="card-title">{{ product.product_name }}</h6>
-                                                        <span class="badge badge-success" v-if="product.product_quantity  >= 1 ">Available {{ product.product_quantity }}  </span>
+                                                        <span class="badge badge-success" v-if="product.product_quantity  >= 1 ">Available {{ product.product_quantity }} </span>
                                                         <span class="badge badge-danger" v-else="">Stock Out </span>
                                                     </div>
                                                 </div>
@@ -121,7 +119,7 @@
                                     <input type="text" v-model="getsearchTerm" class="form-control" style="width: 590px;  margin-bottom: 8px;" placeholder="Search Product">
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="getproduct in getfiltersearch" :key="getproduct.id">
-                                            <a href="#">
+                                            <button class="btn btn-sm" @click.prevent="AddToCart(getproduct.id)">
                                                 <div class="card" style="width: 8.5rem; margin-bottom: 5px;">
                                                     <img :src="getproduct.product_image" id="em_photo" class="card-img-top">
                                                     <div class="card-body">
@@ -130,7 +128,7 @@
                                                         <span class="badge badge-danger" v-else="">Stock Out </span>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -162,6 +160,7 @@
                 // Cart Process
                 errors: {},
                 carts:[],
+                discounts:'',
             }
         },
         methods:{
@@ -224,6 +223,11 @@
                     })
                     .catch()
             },
+            discount(){
+                axios.get('/api/cart/discount')
+                    .then(({data}) => (this.discounts = data))
+                    .catch()
+            },
         },
         created(){
             if (!User.loggedIn()) {
@@ -239,6 +243,7 @@
             this.allCustomer();
             // Pos Process
             this.cartProduct();
+            this.discount();
         },
         computed:{
             filtersearch(){
@@ -250,7 +255,29 @@
                 return this.getproducts.filter(getproduct => {
                     return getproduct.product_name.match(this.getsearchTerm)
                 })
-            }
+            },
+            subtotal(){
+                let sum = 0;
+                for(let i = 0; i < this.carts.length; i++){
+                    sum += (parseFloat(this.carts[i].pro_quantity) * parseFloat(this.carts[i].pro_price));
+                }
+
+                let decimal = Number(sum).toFixed(2);
+
+                return decimal;
+            },
+            total(){
+                let sum = 0;
+                for(let i = 0; i < this.carts.length; i++){
+                    sum += (parseFloat(this.carts[i].pro_quantity) * parseFloat(this.carts[i].pro_price));
+                }
+
+                let total = sum - ((sum/100)*this.discounts.discount);
+
+                let decimal = Number(total).toFixed(2);
+
+                return decimal;
+            },
         },
     }
 </script>
