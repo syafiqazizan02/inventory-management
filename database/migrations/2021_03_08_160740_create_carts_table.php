@@ -18,7 +18,7 @@ class CreateCartsTable extends Migration
             $table->integer('pro_id');
             $table->string('pro_name')->nullable();
             $table->integer('pro_quantity')->nullable();
-            $table->double('product_price', 15, 8)->nullable();
+            $table->double('pro_price', 15, 8)->nullable();
             $table->double('sub_total', 15, 8)->nullable();
             $table->timestamps();
         });

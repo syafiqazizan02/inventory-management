@@ -16,7 +16,7 @@
                             <h5 class="m-0 text-gray-900">Expenses Insert</h5>
                         </div>
 
-                        <div class="table-responsive" style="font-size: 12px">
+                        <div class="table-responsive" style="font-size: 14px">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                 <tr>
@@ -28,11 +28,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Quantity</td>
-                                    <td>Unit</td>
-                                    <td>Total</td>
+                                <tr v-for="cart in carts" :key="cart.id">
+                                    <td>{{ cart.pro_name }}</td>
+                                    <td>
+                                        <input type="text" style="width: 30px;" :value="cart.pro_quantity" readonly>
+                                        <button class="btn btn-sm btn-success">+</button>
+                                        <button class="btn btn-sm btn-danger">-</button>
+                                    </td>
+                                    <td>{{ cart.pro_price }}</td>
+                                    <td>{{ cart.sub_total }}</td>
                                     <td><a href="#" class="btn btn-sm btn-primary">X</a></td>
                                 </tr>
                                 </tbody>
@@ -146,13 +150,17 @@
                 pay:'',
                 due:'',
                 payby:'',
-
+                // Pos Data
                 products:[],
                 categories:[],
                 getproducts:[],
                 searchTerm:'',
                 getsearchTerm:'',
                 customers:[],
+                // Cart Process
+                errors:'',
+                // errors: {},
+                carts:[],
             }
         },
         methods:{
@@ -177,24 +185,30 @@
                     .then(({data}) => (this.customers = data))
                     .catch()
             },
-
             // Pos Process
             AddToCart(id){
                 axios.get('/api/cart/add-to-cart/'+id)
                     .then(() => {
-                        // Reload.$emit('Add To Cart!');
                         Notification.cart_success()
                     })
                     .catch()
-            }
+            },
+            cartProduct(){
+                axios.get('/api/cart/cart-product/')
+                    .then(({data}) => (this.carts = data))
+                    .catch()
+            },
         },
         created(){
             if (!User.loggedIn()) {
                 this.$router.push({name: '/'})
             }
+            // Pos Data
             this.allProduct(); // load get Product
             this.allCategory(); // load get Category
             this.allCustomer(); // load get Customer
+            // Pos Process
+            this.cartProduct(); // load Product list
         },
         computed:{
             filtersearch(){

@@ -17,6 +17,8 @@ class CartController extends Controller
         // check product in cart
         $check = Cart::where('pro_id',$id)->first();
 
+        // dd($product);
+
         if ($check) {
             Cart::where('pro_id',$id)->increment('pro_quantity');
 
@@ -30,14 +32,21 @@ class CartController extends Controller
                 'pro_id' => $id,
                 'pro_name' => $product->product_name,
                 'pro_quantity' => 1,
-                'product_price' => $product->selling_price,
+                'pro_price' => $product->selling_price,
                 'sub_total' => $product->selling_price
             ]);
             $data->save();
 
-            return response($data)->json();
+            //return response($data)->json();
         }
 
+    }
+
+    public function CartProduct()
+    {
+        $cart = Cart::get();
+
+        return response()->json($cart);
     }
 
 
