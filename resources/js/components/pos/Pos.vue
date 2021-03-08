@@ -96,7 +96,7 @@
                                     <input type="text" v-model="searchTerm" class="form-control" style="width: 590px;  margin-bottom: 8px;" placeholder="Search Product">
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="product in filtersearch" :key="product.id">
-                                            <a href="#">
+                                            <button class="btn btn-sm" @click.prevent="AddToCart(product.id)">
                                                 <div class="card" style="width: 8.5rem; margin-bottom: 5px;">
                                                     <img :src="product.product_image" id="em_photo" class="card-img-top">
                                                     <div class="card-body">
@@ -105,7 +105,7 @@
                                                         <span class="badge badge-danger" v-else="">Stock Out </span>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -156,6 +156,7 @@
             }
         },
         methods:{
+            // Pos Data
             allProduct(){
                 axios.get('/api/product/')
                     .then(({data}) => (this.products = data))
@@ -174,8 +175,18 @@
             allCustomer(){
                 axios.get('/api/customer/')
                     .then(({data}) => (this.customers = data))
-                    .catch(console.log('error'))
+                    .catch()
             },
+
+            // Pos Process
+            AddToCart(id){
+                axios.get('/api/cart/add-to-cart/'+id)
+                    .then(() => {
+                        // Reload.$emit('Add To Cart!');
+                        Notification.cart_success()
+                    })
+                    .catch()
+            }
         },
         created(){
             if (!User.loggedIn()) {
