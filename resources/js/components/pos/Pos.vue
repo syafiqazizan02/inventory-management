@@ -57,23 +57,15 @@
 
                             <form>
                                 <label>Customer Name</label>
-                                    <!--<select class="form-control" v-model="customer_id" required="">-->
-                                <select class="form-control" required="">
-                                    <!--<option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>-->
-                                    <option>My Name</option>
+                                <select class="form-control" v-model="customer_id">
+                                    <option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>
                                 </select>
-                                <!--<br>-->
                                 <label style="margin-top: 8px;">Pay</label>
-                                <!--<input type="text" class="form-control" v-model="pay" required="">-->
-                                <input type="text" class="form-control" required="">
-                                <!--<br>-->
+                                <input type="text" class="form-control" v-model="pay" required="">
                                 <label style="margin-top: 8px;">Due</label>
-                                <!--<input type="text" class="form-control" v-model="due" required="">-->
-                                <input type="text" class="form-control" required="">
-                                <!--<br>-->
+                                <input type="text" class="form-control" v-model="due" required="">
                                 <label style="margin-top: 8px;">Pay By</label>
-                                <!--<select class="form-control" v-model="payby" required="">-->
-                                <select class="form-control" required="">
+                                <select class="form-control" v-model="payby" required="">
                                     <option value="HandCash">Hand Cash</option>
                                     <option value="Cheaque">Cheaque</option>
                                     <option value="GiftCard">Gift Card</option>
@@ -150,11 +142,17 @@
     export default {
         data(){
             return{
+                customer_id:'',
+                pay:'',
+                due:'',
+                payby:'',
+
                 products:[],
                 categories:[],
                 getproducts:[],
                 searchTerm:'',
                 getsearchTerm:'',
+                customers:[],
             }
         },
         methods:{
@@ -172,7 +170,12 @@
                 axios.get('/api/product/get-product/'+id)
                     .then(({data}) => (this.getproducts = data))
                     .catch()
-            }
+            },
+            allCustomer(){
+                axios.get('/api/customer/')
+                    .then(({data}) => (this.customers = data))
+                    .catch(console.log('error'))
+            },
         },
         created(){
             if (!User.loggedIn()) {
@@ -180,6 +183,7 @@
             }
             this.allProduct(); // load get Product
             this.allCategory(); // load get Category
+            this.allCustomer(); // load get Customer
         },
         computed:{
             filtersearch(){
