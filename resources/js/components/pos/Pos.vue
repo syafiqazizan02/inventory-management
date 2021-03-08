@@ -37,7 +37,9 @@
                                     </td>
                                     <td>{{ cart.pro_price }}</td>
                                     <td>{{ cart.sub_total }}</td>
-                                    <td><a href="#" class="btn btn-sm btn-primary">X</a></td>
+                                    <td>
+                                        <a @click="removeProduct(cart.id)" class="btn btn-sm btn-primary" style="color: white">x</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -196,6 +198,14 @@
             cartProduct(){
                 axios.get('/api/cart/cart-product/')
                     .then(({data}) => (this.carts = data))
+                    .catch()
+            },
+            removeProduct(id){
+                axios.get('/api/cart/remove-product/'+id)
+                    .then(() => {
+                        Reload.$emit('Add-To-Cart');
+                        Notification.cart_delete()
+                    })
                     .catch()
             },
         },

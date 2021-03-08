@@ -37,7 +37,7 @@ class CartController extends Controller
             ]);
             $data->save();
 
-            //return response($data)->json();
+//            return response()->json($data);
         }
 
     }
@@ -47,6 +47,11 @@ class CartController extends Controller
         $cart = Cart::get();
 
         return response()->json($cart);
+    }
+
+    public function RemoveProduct($id)
+    {
+        Cart::where('id',$id)->delete();
     }
 
 

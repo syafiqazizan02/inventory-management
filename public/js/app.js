@@ -4139,6 +4139,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4205,6 +4207,12 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/cart/cart-product/').then(function (_ref5) {
         var data = _ref5.data;
         return _this5.carts = data;
+      })["catch"]();
+    },
+    removeProduct: function removeProduct(id) {
+      axios.get('/api/cart/remove-product/' + id).then(function () {
+        Reload.$emit('Add-To-Cart');
+        Notification.cart_delete();
       })["catch"]();
     }
   },
@@ -53405,7 +53413,21 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(cart.sub_total))]),
                             _vm._v(" "),
-                            _vm._m(3, true)
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-sm btn-primary",
+                                  staticStyle: { color: "white" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.removeProduct(cart.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("x")]
+                              )
+                            ])
                           ])
                         }),
                         0
@@ -53416,7 +53438,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "card-footer" }, [
-                _vm._m(4),
+                _vm._m(3),
                 _c("br"),
                 _vm._v(" "),
                 _c("form", [
@@ -53577,7 +53599,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-xl-7 col-lg-7" }, [
             _c("div", { staticClass: "card mb-4" }, [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "ul",
@@ -53587,7 +53609,7 @@ var render = function() {
                   attrs: { id: "myTab", role: "tablist" }
                 },
                 [
-                  _vm._m(6),
+                  _vm._m(5),
                   _vm._v(" "),
                   _vm._l(_vm.categories, function(category) {
                     return _c(
@@ -53951,16 +53973,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Total")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { staticClass: "btn btn-sm btn-primary", attrs: { href: "#" } }, [
-        _vm._v("X")
       ])
     ])
   },
