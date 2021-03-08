@@ -4154,8 +4154,7 @@ __webpack_require__.r(__webpack_exports__);
       getsearchTerm: '',
       customers: [],
       // Cart Process
-      errors: '',
-      // errors: {},
+      errors: {},
       carts: []
     };
   },
@@ -4196,6 +4195,7 @@ __webpack_require__.r(__webpack_exports__);
     // Pos Process
     AddToCart: function AddToCart(id) {
       axios.get('/api/cart/add-to-cart/' + id).then(function () {
+        Reload.$emit('Add-To-Cart');
         Notification.cart_success();
       })["catch"]();
     },
@@ -4209,35 +4209,38 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this6 = this;
+
     if (!User.loggedIn()) {
       this.$router.push({
         name: '/'
       });
-    } // Pos Data
+    } // Emmit Add-To-Cart
 
 
-    this.allProduct(); // load get Product
+    Reload.$on('Add-To-Cart', function () {
+      _this6.cartProduct();
+    }); // Pos Data
 
-    this.allCategory(); // load get Category
+    this.allProduct();
+    this.allCategory();
+    this.allCustomer(); // Pos Process
 
-    this.allCustomer(); // load get Customer
-    // Pos Process
-
-    this.cartProduct(); // load Product list
+    this.cartProduct();
   },
   computed: {
     filtersearch: function filtersearch() {
-      var _this6 = this;
+      var _this7 = this;
 
       return this.products.filter(function (product) {
-        return product.product_name.match(_this6.searchTerm);
+        return product.product_name.match(_this7.searchTerm);
       });
     },
     getfiltersearch: function getfiltersearch() {
-      var _this7 = this;
+      var _this8 = this;
 
       return this.getproducts.filter(function (getproduct) {
-        return getproduct.product_name.match(_this7.getsearchTerm);
+        return getproduct.product_name.match(_this8.getsearchTerm);
       });
     }
   }
@@ -73165,7 +73168,9 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.mixin({
     toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.resumeTimer);
   }
 });
-window.Toast = Toast;
+window.Toast = Toast; // Emmit Global on Reload
+
+window.Reload = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["routes"],
   mode: 'history'

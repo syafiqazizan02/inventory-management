@@ -37,6 +37,8 @@ const Toast = Swal.mixin({
 
 window.Toast = Toast;
 
+// Emmit Global on Reload
+window.Reload = new Vue();
 
 const router = new VueRouter({
     routes,

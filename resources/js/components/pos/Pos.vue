@@ -158,8 +158,7 @@
                 getsearchTerm:'',
                 customers:[],
                 // Cart Process
-                errors:'',
-                // errors: {},
+                errors: {},
                 carts:[],
             }
         },
@@ -189,6 +188,7 @@
             AddToCart(id){
                 axios.get('/api/cart/add-to-cart/'+id)
                     .then(() => {
+                        Reload.$emit('Add-To-Cart');
                         Notification.cart_success()
                     })
                     .catch()
@@ -203,12 +203,16 @@
             if (!User.loggedIn()) {
                 this.$router.push({name: '/'})
             }
+            // Emmit Add-To-Cart
+            Reload.$on('Add-To-Cart',() =>{
+                this.cartProduct();
+            })
             // Pos Data
-            this.allProduct(); // load get Product
-            this.allCategory(); // load get Category
-            this.allCustomer(); // load get Customer
+            this.allProduct();
+            this.allCategory();
+            this.allCustomer();
             // Pos Process
-            this.cartProduct(); // load Product list
+            this.cartProduct();
         },
         computed:{
             filtersearch(){
