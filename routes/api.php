@@ -1,10 +1,8 @@
 <?php
 
 Route::group([
-
     'middleware' => 'api',
     'prefix' => 'auth'
-
 ], function ($router) {
 
     Route::post('login', 'API\Auth\AuthController@login');
@@ -28,6 +26,6 @@ Route::get('/salary/view/{id}', 'API\Salary\SalaryController@ViewSalary');
 Route::get('/salary/edit/{id}', 'API\Salary\SalaryController@EditSalary');
 Route::put('/salary/update/{id}', 'API\Salary\SalaryController@SalaryUpdate');
 
-Route::post('/stock/update/{id}', 'API\Product\ProductController@StockUpdate'); // Stock Controller Maybe?
+Route::post('/stock/update/{id}', 'API\Product\ProductController@StockUpdate'); // Stock\StockController Maybe?
 
 Route::get('/product/get-product/{id}', 'API\Pos\PosController@GetProduct');

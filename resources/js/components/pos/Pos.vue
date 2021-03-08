@@ -1,25 +1,5 @@
 <template>
     <div>
-<!--        <div class="row justify-content-center">-->
-<!--            <div class="col-xl-12 col-lg-12 col-md-12">-->
-<!--                <div class="card shadow-sm my-5">-->
-<!--                    <div class="card-body p-0">-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-lg-12">-->
-<!--                                <div class="login-form">-->
-<!--&lt;!&ndash;                                    <div class="text-center">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <h1 class="h4 text-gray-900 mb-4">View Products</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <hr>&ndash;&gt;-->
-<!--                                    Hello World!-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">POS</h1>
@@ -34,10 +14,8 @@
                     <div class="card mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h5 class="m-0 text-gray-900">Expenses Insert</h5>
-<!--                            <a class="btn btn-info" style="color: white">Add Customer</a>-->
                         </div>
 
-<!--                        <div class="table-responsive" style="font-size: 12px">-->
                         <div class="table-responsive" style="font-size: 12px">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
@@ -60,44 +38,50 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="card-footer">
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">Total Quantity:
                                     <strong>10</strong>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">Sub Total:
-                                    <strong>10</strong>
+                                    <strong>15</strong>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">Vat:
-                                    <strong>10</strong>
+                                    <strong>5</strong>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">Total:
-                                    <strong>10</strong>
+                                    <strong>20</strong>
                                 </li>
-                            </ul>
-                            <br><br>
+                            </ul><br>
+
                             <form>
                                 <label>Customer Name</label>
-                                <select class="form-control" v-model="customer_id">
-                                    <option>ASD</option>
-<!--                                    <option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>-->
+                                    <!--<select class="form-control" v-model="customer_id" required="">-->
+                                <select class="form-control" required="">
+                                    <!--<option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>-->
+                                    <option>My Name</option>
                                 </select>
-                                <label>Pay</label>
-                                <input type="text" class="form-control" required="" v-model="pay">
-                                <label>Due</label>
-                                <input type="text" class="form-control" required="" v-model="due">
-                                <label>Pay By</label>
-                                <select class="form-control" v-model="payby">
-                                    <option value="HandCash">Hand Cash </option>
-                                    <option value="Cheaque">Cheaque </option>
-                                    <option value="GiftCard">Gift Card </option>
+                                <!--<br>-->
+                                <label style="margin-top: 8px;">Pay</label>
+                                <!--<input type="text" class="form-control" v-model="pay" required="">-->
+                                <input type="text" class="form-control" required="">
+                                <!--<br>-->
+                                <label style="margin-top: 8px;">Due</label>
+                                <!--<input type="text" class="form-control" v-model="due" required="">-->
+                                <input type="text" class="form-control" required="">
+                                <!--<br>-->
+                                <label style="margin-top: 8px;">Pay By</label>
+                                <!--<select class="form-control" v-model="payby" required="">-->
+                                <select class="form-control" required="">
+                                    <option value="HandCash">Hand Cash</option>
+                                    <option value="Cheaque">Cheaque</option>
+                                    <option value="GiftCard">Gift Card</option>
                                 </select>
                                 <br>
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </form>
-
                         </div>
-
                     </div>
                 </div>
 
@@ -106,14 +90,12 @@
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h5 class="m-0 text-gray-900">Products List</h5>
                         </div>
-<!--                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 20px;">-->
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 10px;">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All Product</a>
                             </li>
                             <li class="nav-item" v-for="category in categories" :key="category.id">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" @click="subProduct(category.id)" >{{ category.category_name }}</a>
-<!--                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{{ category.category_name }}</a>-->
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -137,31 +119,30 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <input type="text" v-model="getsearchTerm" class="form-control" style="width: 590px;  margin-bottom: 8px;" placeholder="Search Product">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="getproduct in getfiltersearch" :key="getproduct.id">
-                                        <a href="#">
-                                            <div class="card" style="width: 8.5rem; margin-bottom: 5px;">
-                                                <img :src="getproduct.product_image" id="em_photo" class="card-img-top">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">{{ getproduct.product_name }}</h6>
-                                                    <span class="badge badge-success" v-if="getproduct.product_quantity  >= 1 ">Available {{ getproduct.product_quantity }}  </span>
-                                                    <span class="badge badge-danger" v-else="">Stock Out </span>
+                                <div class="card-body">
+                                    <input type="text" v-model="getsearchTerm" class="form-control" style="width: 590px;  margin-bottom: 8px;" placeholder="Search Product">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="getproduct in getfiltersearch" :key="getproduct.id">
+                                            <a href="#">
+                                                <div class="card" style="width: 8.5rem; margin-bottom: 5px;">
+                                                    <img :src="getproduct.product_image" id="em_photo" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">{{ getproduct.product_name }}</h6>
+                                                        <span class="badge badge-success" v-if="getproduct.product_quantity  >= 1 ">Available {{ getproduct.product_quantity }}  </span>
+                                                        <span class="badge badge-danger" v-else="">Stock Out </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
 
         </div>
-        <!---Container Fluid-->
     </div>
 </template>
 
