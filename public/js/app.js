@@ -4214,6 +4214,18 @@ __webpack_require__.r(__webpack_exports__);
         Reload.$emit('Add-To-Cart');
         Notification.cart_delete();
       })["catch"]();
+    },
+    increment: function increment(id) {
+      axios.get('/api/cart/increment/' + id).then(function () {
+        Reload.$emit('Add-To-Cart');
+        Notification.success();
+      })["catch"]();
+    },
+    decrement: function decrement(id) {
+      axios.get('/api/cart/decrement/' + id).then(function () {
+        Reload.$emit('Add-To-Cart');
+        Notification.success();
+      })["catch"]();
     }
   },
   created: function created() {
@@ -53398,13 +53410,29 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "button",
-                                { staticClass: "btn btn-sm btn-success" },
+                                {
+                                  staticClass: "btn btn-sm btn-success",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.increment(cart.id)
+                                    }
+                                  }
+                                },
                                 [_vm._v("+")]
                               ),
                               _vm._v(" "),
                               _c(
                                 "button",
-                                { staticClass: "btn btn-sm btn-danger" },
+                                {
+                                  staticClass: "btn btn-sm btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.decrement(cart.id)
+                                    }
+                                  }
+                                },
                                 [_vm._v("-")]
                               )
                             ]),

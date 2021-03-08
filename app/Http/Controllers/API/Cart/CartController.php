@@ -17,13 +17,11 @@ class CartController extends Controller
         // check product in cart
         $check = Cart::where('pro_id',$id)->first();
 
-        // dd($product);
-
         if ($check) {
             Cart::where('pro_id',$id)->increment('pro_quantity');
 
             $product = Cart::where('pro_id',$id)->first();
-            $subtotal = $product->pro_quantity * $product->product_price;
+            $subtotal = $product->pro_quantity * $product->pro_price;
 
             Cart::where('pro_id',$id)->update(['sub_total'=> $subtotal]);
         }else{
@@ -52,6 +50,30 @@ class CartController extends Controller
     public function RemoveProduct($id)
     {
         Cart::where('id',$id)->delete();
+    }
+
+    public function Increment($id)
+    {
+        $quantity = Cart::where('id',$id)->increment('pro_quantity');
+
+        $product = Cart::where('id',$id)->first();
+        $subtotal = $product->pro_quantity * $product->pro_price;
+
+        Cart::where('id',$id)->update(['sub_total'=> $subtotal]);
+
+//        return response('Done');
+    }
+
+    public function Decrement($id)
+    {
+        $quantity = Cart::where('id',$id)->decrement('pro_quantity');
+
+        $product = Cart::where('id',$id)->first();
+        $subtotal = $product->pro_quantity * $product->pro_price;
+
+        Cart::where('id',$id)->update(['sub_total'=> $subtotal]);
+
+//        return response('Done');
     }
 
 
