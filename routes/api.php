@@ -37,3 +37,7 @@ Route::get('/cart/remove-product/{id}', 'API\Cart\CartController@RemoveProduct')
 Route::get('/cart/increment/{id}', 'API\Cart\CartController@Increment');
 Route::get('/cart/decrement/{id}', 'API\Cart\CartController@Decrement');
 Route::get('/cart/discount', 'API\Cart\CartController@Discount');
+
+Route::get('/order/order-views', 'API\Order\OrderController@OrderViews');
+Route::get('/order/order-details/{id}', 'API\Order\OrderController@OrderDetails');
+Route::get('/order/all-order-details/{id}', 'API\Order\OrderController@AllOrderDetails');

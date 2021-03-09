@@ -57,8 +57,8 @@
                     </a>
                     <div id="collapseBootstrap9" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <router-link to="order" class="collapse-item">Order List</router-link>
-                            <router-link to="search-order" class="collapse-item">Order Search</router-link>
+                            <router-link to="order" class="collapse-item">View Orders</router-link>
+                            <router-link to="search-order" class="collapse-item">Search Orders</router-link>
                         </div>
                     </div>
                 </li>

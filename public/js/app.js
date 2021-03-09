@@ -3999,8 +3999,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Order"
+  data: function data() {
+    return {
+      orders: [],
+      searchTerm: ''
+    };
+  },
+  methods: {
+    allOrder: function allOrder() {
+      var _this = this;
+
+      axios.get('/api/order/order-views/').then(function (_ref) {
+        var data = _ref.data;
+        return _this.orders = data;
+      })["catch"]();
+    }
+  },
+  created: function created() {
+    if (!User.loggedIn()) {
+      this.$router.push({
+        name: '/'
+      });
+    }
+
+    this.allOrder();
+  },
+  computed: {
+    filtersearch: function filtersearch() {
+      var _this2 = this;
+
+      return this.orders.filter(function (order) {
+        return order.name.match(_this2.searchTerm);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -53477,9 +53559,147 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12" }, [
+        _c("div", { staticClass: "card shadow-sm my-5" }, [
+          _c("div", { staticClass: "card-body p-0" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-lg-12" }, [
+                _c("div", { staticClass: "login-form" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.searchTerm,
+                        expression: "searchTerm"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    staticStyle: { float: "right", width: "200px" },
+                    attrs: { type: "text", placeholder: "Search by (Name)" },
+                    domProps: { value: _vm.searchTerm },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.searchTerm = $event.target.value
+                      }
+                    }
+                  }),
+                  _c("br"),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table align-items-center table-flush" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.filtersearch, function(order) {
+                            return _c("tr", { key: order.id }, [
+                              _c("td", [
+                                _vm._v(" " + _vm._s(order.name) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v("RM " + _vm._s(order.total) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(" " + _vm._s(order.pay_method) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v("RM " + _vm._s(order.pay_amount) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v("RM " + _vm._s(order.pay_balance) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(order.order_date) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "btn btn-sm btn-primary",
+                                      attrs: {
+                                        to: {
+                                          name: "view-order",
+                                          params: { id: order.id }
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Details")]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("h1", { staticClass: "h4 text-gray-900 mb-4" }, [
+        _vm._v("View Orders")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", [_vm._v("Customer Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total Price")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Payment Method")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Payment Amount")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Payment Balance")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Order Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
