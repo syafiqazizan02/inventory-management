@@ -65,11 +65,11 @@
                                     <option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>
                                 </select>
                                 <label style="margin-top: 8px;">Payment Amount :</label>
-                                <input type="text" class="form-control" v-model="amount" required>
+                                <input type="text" class="form-control" v-model="pay_amount" required>
                                 <label style="margin-top: 8px;">Payment Balance :</label>
-                                <input type="text" class="form-control" v-model="balance" required>
+                                <input type="text" class="form-control" v-model="pay_balance" required>
                                 <label style="margin-top: 8px;">Payment Method :</label>
-                                <select class="form-control" v-model="method" required>
+                                <select class="form-control" v-model="pay_method" required>
                                     <option value="Cash">Cash</option>
                                     <option value="Debit">Debit</option>
                                     <option value="Cheque">Cheque</option>
@@ -148,9 +148,9 @@
             return{
                 // Form
                 customer_id:'',
-                amount:'',
-                balance:'',
-                method:'',
+                pay_amount:'',
+                pay_balance:'',
+                pay_method:'',
                 // Pos Data
                 products:[],
                 categories:[],
@@ -234,9 +234,9 @@
                     discount:this.discounts.discount,
                     total:this.total,
                     customer_id:this.customer_id,
-                    amount:this.amount,
-                    balance:this.balance,
-                    method:this.method
+                    pay_amount:this.pay_amount,
+                    pay_balance:this.pay_balance,
+                    pay_method:this.pay_method
                 }
                 // console.log(data);
 

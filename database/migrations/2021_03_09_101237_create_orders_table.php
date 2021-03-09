@@ -19,9 +19,9 @@ class CreateOrdersTable extends Migration
             $table->double('sub_total', 15, 8)->nullable();
             $table->integer('discount')->nullable();
             $table->double('total', 15, 8)->nullable();
-            $table->double('amount', 15, 8)->nullable();
-            $table->double('balance', 15, 8)->nullable();
-            $table->string('method')->nullable();
+            $table->double('pay_amount', 15, 8)->nullable();
+            $table->double('pay_balance', 15, 8)->nullable();
+            $table->string('pay_method')->nullable();
             $table->datetime('order_date')->nullable();
             $table->string('order_month')->nullable();
             $table->year('order_year')->nullable();

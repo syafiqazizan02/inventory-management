@@ -4144,9 +4144,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // Form
       customer_id: '',
-      amount: '',
-      balance: '',
-      method: '',
+      pay_amount: '',
+      pay_balance: '',
+      pay_method: '',
       // Pos Data
       products: [],
       categories: [],
@@ -4240,9 +4240,9 @@ __webpack_require__.r(__webpack_exports__);
         discount: this.discounts.discount,
         total: this.total,
         customer_id: this.customer_id,
-        amount: this.amount,
-        balance: this.balance,
-        method: this.method
+        pay_amount: this.pay_amount,
+        pay_balance: this.pay_balance,
+        pay_method: this.pay_method
       }; // console.log(data);
 
       axios.post('/api/pos/order-complete', data).then(function () {
@@ -53621,19 +53621,19 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.amount,
-                          expression: "amount"
+                          value: _vm.pay_amount,
+                          expression: "pay_amount"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: { type: "text", required: "" },
-                      domProps: { value: _vm.amount },
+                      domProps: { value: _vm.pay_amount },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.amount = $event.target.value
+                          _vm.pay_amount = $event.target.value
                         }
                       }
                     }),
@@ -53647,19 +53647,19 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.balance,
-                          expression: "balance"
+                          value: _vm.pay_balance,
+                          expression: "pay_balance"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: { type: "text", required: "" },
-                      domProps: { value: _vm.balance },
+                      domProps: { value: _vm.pay_balance },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.balance = $event.target.value
+                          _vm.pay_balance = $event.target.value
                         }
                       }
                     }),
@@ -53675,8 +53675,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.method,
-                            expression: "method"
+                            value: _vm.pay_method,
+                            expression: "pay_method"
                           }
                         ],
                         staticClass: "form-control",
@@ -53691,7 +53691,7 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.method = $event.target.multiple
+                            _vm.pay_method = $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
                           }
