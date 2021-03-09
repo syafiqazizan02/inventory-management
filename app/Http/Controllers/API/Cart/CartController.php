@@ -78,6 +78,4 @@ class CartController extends Controller
         return response()->json($discount);
     }
 
-
-
 }

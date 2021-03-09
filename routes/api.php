@@ -28,7 +28,8 @@ Route::put('/salary/update/{id}', 'API\Salary\SalaryController@SalaryUpdate');
 
 Route::post('/stock/update/{id}', 'API\Product\ProductController@StockUpdate'); // Stock\StockController Maybe?
 
-Route::get('/product/get-product/{id}', 'API\Pos\PosController@GetProduct');
+Route::get('/pos/get-product/{id}', 'API\Pos\PosController@GetProduct');
+Route::post('/pos/order-complete', 'API\Pos\PosController@OrderComplete');
 
 Route::get('/cart/add-to-cart/{id}', 'API\Cart\CartController@AddToCart');
 Route::get('/cart/cart-product', 'API\Cart\CartController@CartProduct');

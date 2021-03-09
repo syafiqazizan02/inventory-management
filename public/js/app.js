@@ -4142,10 +4142,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      // Form
       customer_id: '',
-      pay: '',
-      due: '',
-      payby: '',
+      amount: '',
+      balance: '',
+      method: '',
       // Pos Data
       products: [],
       categories: [],
@@ -4154,7 +4155,6 @@ __webpack_require__.r(__webpack_exports__);
       getsearchTerm: '',
       customers: [],
       // Cart Process
-      errors: {},
       carts: [],
       discounts: ''
     };
@@ -4180,7 +4180,7 @@ __webpack_require__.r(__webpack_exports__);
     subProduct: function subProduct(id) {
       var _this3 = this;
 
-      axios.get('/api/product/get-product/' + id).then(function (_ref3) {
+      axios.get('/api/pos/get-product/' + id).then(function (_ref3) {
         var data = _ref3.data;
         return _this3.getproducts = data;
       })["catch"]();
@@ -4232,6 +4232,21 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/cart/discount').then(function (_ref6) {
         var data = _ref6.data;
         return _this6.discounts = data;
+      })["catch"]();
+    },
+    orderComplete: function orderComplete() {
+      var data = {
+        subtotal: this.subtotal,
+        discount: this.discounts.discount,
+        total: this.total,
+        customer_id: this.customer_id,
+        amount: this.amount,
+        balance: this.balance,
+        method: this.method
+      }; // console.log(data);
+
+      axios.post('/api/pos/order-complete', data).then(function () {
+        Notification.success(); // this.$router.push({name: 'home'})
       })["catch"]();
     }
   },
@@ -53545,158 +53560,170 @@ var render = function() {
                 ]),
                 _c("br"),
                 _vm._v(" "),
-                _c("form", [
-                  _c("label", [_vm._v("Customer Name")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.orderComplete($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("label", [_vm._v("Customer Name :")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.customer_id,
+                            expression: "customer_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.customer_id = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      _vm._l(_vm.customers, function(customer) {
+                        return _c(
+                          "option",
+                          { domProps: { value: customer.id } },
+                          [_vm._v(_vm._s(customer.name) + " ")]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c("label", { staticStyle: { "margin-top": "8px" } }, [
+                      _vm._v("Payment Amount :")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.customer_id,
-                          expression: "customer_id"
+                          value: _vm.amount,
+                          expression: "amount"
                         }
                       ],
                       staticClass: "form-control",
+                      attrs: { type: "text", required: "" },
+                      domProps: { value: _vm.amount },
                       on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.customer_id = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.amount = $event.target.value
                         }
                       }
-                    },
-                    _vm._l(_vm.customers, function(customer) {
-                      return _c(
-                        "option",
-                        { domProps: { value: customer.id } },
-                        [_vm._v(_vm._s(customer.name) + " ")]
-                      )
                     }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("label", { staticStyle: { "margin-top": "8px" } }, [
-                    _vm._v("Pay")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.pay,
-                        expression: "pay"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", required: "" },
-                    domProps: { value: _vm.pay },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.pay = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { staticStyle: { "margin-top": "8px" } }, [
-                    _vm._v("Due")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.due,
-                        expression: "due"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", required: "" },
-                    domProps: { value: _vm.due },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.due = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { staticStyle: { "margin-top": "8px" } }, [
-                    _vm._v("Pay By")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
+                    _vm._v(" "),
+                    _c("label", { staticStyle: { "margin-top": "8px" } }, [
+                      _vm._v("Payment Balance :")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.payby,
-                          expression: "payby"
+                          value: _vm.balance,
+                          expression: "balance"
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { required: "" },
+                      attrs: { type: "text", required: "" },
+                      domProps: { value: _vm.balance },
                       on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.payby = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.balance = $event.target.value
                         }
                       }
-                    },
-                    [
-                      _c("option", { attrs: { value: "HandCash" } }, [
-                        _vm._v("Hand Cash")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Cheaque" } }, [
-                        _vm._v("Cheaque")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "GiftCard" } }, [
-                        _vm._v("Gift Card")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Submit")]
-                  )
-                ])
+                    }),
+                    _vm._v(" "),
+                    _c("label", { staticStyle: { "margin-top": "8px" } }, [
+                      _vm._v("Payment Method :")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.method,
+                            expression: "method"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.method = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "Cash" } }, [
+                          _vm._v("Cash")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Debit" } }, [
+                          _vm._v("Debit")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Cheque" } }, [
+                          _vm._v("Cheque")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Submit")]
+                    )
+                  ]
+                )
               ])
             ])
           ]),

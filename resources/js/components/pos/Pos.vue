@@ -59,20 +59,20 @@
                                 </li>
                             </ul><br>
 
-                            <form>
-                                <label>Customer Name</label>
-                                <select class="form-control" v-model="customer_id">
+                            <form @submit.prevent="orderComplete">
+                                <label>Customer Name :</label>
+                                <select class="form-control" v-model="customer_id" required>
                                     <option :value="customer.id" v-for="customer in customers">{{customer.name }} </option>
                                 </select>
-                                <label style="margin-top: 8px;">Pay</label>
-                                <input type="text" class="form-control" v-model="pay" required="">
-                                <label style="margin-top: 8px;">Due</label>
-                                <input type="text" class="form-control" v-model="due" required="">
-                                <label style="margin-top: 8px;">Pay By</label>
-                                <select class="form-control" v-model="payby" required="">
-                                    <option value="HandCash">Hand Cash</option>
-                                    <option value="Cheaque">Cheaque</option>
-                                    <option value="GiftCard">Gift Card</option>
+                                <label style="margin-top: 8px;">Payment Amount :</label>
+                                <input type="text" class="form-control" v-model="amount" required>
+                                <label style="margin-top: 8px;">Payment Balance :</label>
+                                <input type="text" class="form-control" v-model="balance" required>
+                                <label style="margin-top: 8px;">Payment Method :</label>
+                                <select class="form-control" v-model="method" required>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Debit">Debit</option>
+                                    <option value="Cheque">Cheque</option>
                                 </select>
                                 <br>
                                 <button type="submit" class="btn btn-success">Submit</button>
@@ -146,10 +146,11 @@
     export default {
         data(){
             return{
+                // Form
                 customer_id:'',
-                pay:'',
-                due:'',
-                payby:'',
+                amount:'',
+                balance:'',
+                method:'',
                 // Pos Data
                 products:[],
                 categories:[],
@@ -158,7 +159,6 @@
                 getsearchTerm:'',
                 customers:[],
                 // Cart Process
-                errors: {},
                 carts:[],
                 discounts:'',
             }
@@ -176,7 +176,7 @@
                     .catch()
             },
             subProduct(id){
-                axios.get('/api/product/get-product/'+id)
+                axios.get('/api/pos/get-product/'+id)
                     .then(({data}) => (this.getproducts = data))
                     .catch()
             },
@@ -228,6 +228,25 @@
                     .then(({data}) => (this.discounts = data))
                     .catch()
             },
+            orderComplete(){
+                var data = {
+                    subtotal:this.subtotal,
+                    discount:this.discounts.discount,
+                    total:this.total,
+                    customer_id:this.customer_id,
+                    amount:this.amount,
+                    balance:this.balance,
+                    method:this.method
+                }
+                // console.log(data);
+
+                axios.post('/api/pos/order-complete',data)
+                    .then(() => {
+                        Notification.success()
+                        // this.$router.push({name: 'home'})
+                    })
+                    .catch()
+            },
         },
         created(){
             if (!User.loggedIn()) {
@@ -273,7 +292,6 @@
                 }
 
                 let total = sum - ((sum/100)*this.discounts.discount);
-
                 let decimal = Number(total).toFixed(2);
 
                 return decimal;

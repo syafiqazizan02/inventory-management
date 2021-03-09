@@ -15,4 +15,11 @@ class PosController extends Controller
 
         return response()->json($product);
     }
+
+    public function OrderComplete(Request $request)
+    {
+
+    }
+
+
 }
