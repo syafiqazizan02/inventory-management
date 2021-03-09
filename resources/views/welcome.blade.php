@@ -50,6 +50,20 @@
                     Features
                 </div>
                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap9"
+                       aria-expanded="true" aria-controls="collapseBootstrap9">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Order</span>
+                    </a>
+                    <div id="collapseBootstrap9" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <router-link to="order" class="collapse-item">Order List</router-link>
+                            <router-link to="search-order" class="collapse-item">Order Search</router-link>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap7"
                        aria-expanded="true" aria-controls="collapseBootstrap7">
                         <i class="far fa-fw fa-window-maximize"></i>

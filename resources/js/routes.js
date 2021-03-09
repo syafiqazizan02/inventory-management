@@ -39,6 +39,10 @@ let EditCustomer = require('./components/customer/Edit.vue').default;
 
 let Pos = require('./components/pos/Pos.vue').default;
 
+let Order = require('./components/order/Order.vue').default;
+let ViewOrder = require('./components/order/ViewOrder.vue').default;
+let SearchOrder = require('./components/order/SearchOrder.vue').default;
+
 export const routes = [
 
     { path: '/', component: Login, name:'/'},
@@ -81,6 +85,10 @@ export const routes = [
     { path: '/edit-customer/:id', component: EditCustomer, name:'edit-customer'},
 
     { path: '/pos', component: Pos, name:'pos'},
+
+    { path: '/order', component: Order, name:'order'},
+    { path: '/view-order/:id', component: ViewOrder, name:'view-order'},
+    { path: '/search-order', component: SearchOrder, name:'search-order'},
 
 
 ]
