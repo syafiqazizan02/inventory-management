@@ -42,3 +42,9 @@ Route::get('/order/order-views', 'API\Order\OrderController@OrderViews');
 Route::get('/order/order-infos/{id}', 'API\Order\OrderController@OrderInfos');
 Route::get('/order/order-details/{id}', 'API\Order\OrderController@OrderDetails');
 Route::post('/order/order-search', 'API\Order\OrderController@SearchOrderDate');
+
+Route::get('/dashboard/today-sales', 'API\Pos\PosController@TodaySales');
+Route::get('/dashboard/today-income', 'API\Pos\PosController@TodayIncome');
+Route::get('/dashboard/today-due', 'API\Pos\PosController@TodayDue');
+Route::get('/dashboard/today-expense', 'API\Pos\PosController@TodayExpense');
+Route::get('/dashboard/stock-out', 'API\Pos\PosController@StockOut');

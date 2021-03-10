@@ -50,7 +50,7 @@ class OrderController extends Controller
 
         $order = Order::join('customers','orders.customer_id','customers.id')
             ->select('customers.name','orders.*')
-             ->where('orders.order_date', 'LIKE', "%{$date}%")
+            ->where('orders.order_date', 'LIKE', "%{$date}%")
             ->get();
 
         return response()->json($order);

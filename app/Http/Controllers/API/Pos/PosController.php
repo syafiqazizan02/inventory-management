@@ -15,7 +15,7 @@ class PosController extends Controller
 {
     public function GetProduct($id)
     {
-        $product = Product::where('category_id',$id)->get();
+        $product = Product::where('category_id', $id)->get();
 
         return response()->json($product);
     }
@@ -33,8 +33,6 @@ class PosController extends Controller
         $data['order_date'] = Carbon::now()->toDateTimeString();
         $data['order_month'] = date('F');
         $data['order_year'] = date('Y');
-
-//        dd($data);
 
         $order_id = Order::insertGetId($data);
 
@@ -56,8 +54,55 @@ class PosController extends Controller
         }
 
         DB::table('carts')->delete();
-
     }
 
 
+    public function TodaySales()
+    {
+        $date = date('Y-m-d');
+        $sales = DB::table('orders')
+            ->where('order_date', 'LIKE', "%{$date}%")
+            ->sum('total');
+
+        return response()->json($sales);
+    }
+
+    public function TodayIncome()
+    {
+        $date = date('Y-m-d');
+        $income = DB::table('orders')
+            ->where('order_date', 'LIKE', "%{$date}%")
+            ->sum('pay_amount');
+
+        return response()->json($income);
+    }
+
+    public function TodayDue()
+    {
+        $date = date('Y-m-d');
+        $due = DB::table('orders')
+            ->where('order_date', 'LIKE', "%{$date}%")
+            ->sum('pay_balance');
+
+        return response()->json($due);
+    }
+
+    public function TodayExpense()
+    {
+        $date = date('Y-m-d');
+        $expense = DB::table('expenses')
+            ->where('expense_date', 'LIKE', "%{$date}%")
+            ->sum('amount');
+
+        return response()->json($expense);
+    }
+
+    public function StockOut()
+    {
+        $product = DB::table('products')
+            ->where('product_quantity', '<', '1')
+            ->get();
+
+        return response()->json($product);
+    }
 }
