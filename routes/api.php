@@ -26,7 +26,7 @@ Route::get('/salary/view/{id}', 'API\Salary\SalaryController@ViewSalary');
 Route::get('/salary/edit/{id}', 'API\Salary\SalaryController@EditSalary');
 Route::put('/salary/update/{id}', 'API\Salary\SalaryController@SalaryUpdate');
 
-Route::post('/stock/update/{id}', 'API\Product\ProductController@StockUpdate'); // Stock\StockController Maybe?
+Route::post('/stock/update/{id}', 'API\Product\ProductController@StockUpdate');
 
 Route::get('/pos/get-product/{id}', 'API\Pos\PosController@GetProduct');
 Route::post('/pos/order-complete', 'API\Pos\PosController@OrderComplete');
@@ -41,3 +41,4 @@ Route::get('/cart/discount', 'API\Cart\CartController@Discount');
 Route::get('/order/order-views', 'API\Order\OrderController@OrderViews');
 Route::get('/order/order-infos/{id}', 'API\Order\OrderController@OrderInfos');
 Route::get('/order/order-details/{id}', 'API\Order\OrderController@OrderDetails');
+Route::post('/order/order-search', 'API\Order\OrderController@SearchOrderDate');
