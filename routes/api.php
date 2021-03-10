@@ -39,5 +39,5 @@ Route::get('/cart/decrement/{id}', 'API\Cart\CartController@Decrement');
 Route::get('/cart/discount', 'API\Cart\CartController@Discount');
 
 Route::get('/order/order-views', 'API\Order\OrderController@OrderViews');
+Route::get('/order/order-infos/{id}', 'API\Order\OrderController@OrderInfos');
 Route::get('/order/order-details/{id}', 'API\Order\OrderController@OrderDetails');
-Route::get('/order/all-order-details/{id}', 'API\Order\OrderController@AllOrderDetails');

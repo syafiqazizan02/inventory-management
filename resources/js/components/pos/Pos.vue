@@ -243,7 +243,7 @@
                 axios.post('/api/pos/order-complete',data)
                     .then(() => {
                         Notification.success()
-                        this.$router.push({name: 'pos'})
+                        this.$router.push({name: 'home'})
                     })
                     .catch()
             },
