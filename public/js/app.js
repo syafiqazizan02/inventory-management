@@ -2265,11 +2265,13 @@ __webpack_require__.r(__webpack_exports__);
           name: 'home'
         });
       })["catch"](function (error) {
-        return _this.errors = error.response.data.errors;
-      }, Toast.fire({
-        icon: 'warning',
-        title: 'Invalid Email or Password!'
-      }));
+        return (// console.log(error.response.data)
+          Toast.fire({
+            icon: 'warning',
+            title: 'Invalid Email or Password'
+          })
+        );
+      });
     }
   },
   created: function created() {

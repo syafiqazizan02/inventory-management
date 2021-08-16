@@ -66,25 +66,23 @@
         methods:{
             login(){
                 axios.post('/api/auth/login',this.form)
-                    .then(res => {
-                        User.responseAfterLogin(res)
+                    .then(res => { User.responseAfterLogin(res)
 
                         Toast.fire({
                             icon: 'success',
                             title: 'Signed In Successfully!'
                         })
 
-                        this.$router.push({ name: 'home'})
+                         this.$router.push({ name: 'home'})
                     })
-                    .catch(error =>
-                        this.errors = error.response.data.errors,
-
+                    .catch(error => 
+                        // console.log(error.response.data)
                         Toast.fire({
                             icon: 'warning',
-                            title: 'Invalid Email or Password!'
-                        })
+                            title: 'Invalid Email or Password'
+                        })        
                     )
-            }
+            },
         },
         created(){
             if (User.loggedIn()) {
